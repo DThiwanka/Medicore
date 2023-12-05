@@ -12,6 +12,13 @@ import PatientHomePage from './components/Patients/PatientHomePage/PatientHomePa
 //Landing Page
 import Home from './components/Home/Home';
 
+//Register Page
+import Register from './components/Register/Register';
+
+//Login Page
+import Login from './components/Login/Login';
+
+
 function App() {
   return (
     <div className="app">
@@ -26,6 +33,9 @@ function App() {
           <Route path="/User" element={<PatientHomePage />} />
 
           <Route path="/" element={<Home />} />
+          
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           
 
           {/* Add more routes for the customer side as needed */}
