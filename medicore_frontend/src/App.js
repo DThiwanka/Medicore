@@ -38,7 +38,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           
 
-          {/* Add more routes for the customer side as needed */}
+          
         </Routes>
       </BrowserRouter>
     </div>
