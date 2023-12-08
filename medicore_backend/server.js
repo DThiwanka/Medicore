@@ -28,6 +28,12 @@ connection.once("open", () => {
     console.log("Mongo Db Connected");  
 })
 
+
+const patientRouter = require('./routes/Patients');
+
+
+app.use("/patient", patientRouter);
+
 app.listen(PORT, () => {
     console.log(`Server is Runnig on PORT ${PORT}`)
 })
