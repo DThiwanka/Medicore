@@ -41,7 +41,7 @@ router.route('/').get((req, res) => {
 
 })
 
-router.route('/update/:id').put(async (req, res) => {
+router.route('/update/:id').post(async (req, res) => {
     let patID = req.params.id;
 
     const { name, email, password, gender, bloodGroup, address, notes } = req.body;
@@ -56,8 +56,9 @@ router.route('/update/:id').put(async (req, res) => {
         notes
     }
 
-    const update = await Patient.findByIdAndUpdate(patID, updatePatient).then(() => {
-        res.status(200).send({ status: "User Updated", user: update })
+    const update = await Patient.findByIdAndUpdate(patID, updatePatient)
+        .then(() => {
+        res.status(200).send({ status: "User Updated"})
 
     }).catch((err) => {
         console.log(err);
@@ -83,8 +84,9 @@ router.route('/get/:id').get(async (req, res) => {
 
     const pat = await Patient.findById(patID)
         // await Patient.findOne(email);
-        .then(() => {
-            res.status(200).send({ status: "User Fetched!", data: pat })
+        
+        .then((patient) => {
+            res.status(200).send({ status: "User Fetched!", patient })
         }).catch(() => {
             console.log(err.message);
             res.status(500).send({ status: "Error with get User!", error: err.message })
