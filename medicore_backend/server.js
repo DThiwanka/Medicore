@@ -30,9 +30,10 @@ connection.once("open", () => {
 
 
 const patientRouter = require('./routes/Patients');
-
+const doctorRouter = require('./routes/Doctors')
 
 app.use("/patient", patientRouter);
+app.use("/doctor", doctorRouter);
 
 app.listen(PORT, () => {
     console.log(`Server is Runnig on PORT ${PORT}`)
