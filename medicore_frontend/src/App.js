@@ -32,7 +32,7 @@ function App() {
 
           <Route path="/User" element={<PatientHomePage />} />
 
-          <Route path="/" element={<Home />} />
+          <Route path="/" exact element={<Home />} />
           
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
