@@ -3,8 +3,14 @@ import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { FaHome, FaUser, FaUserMd, FaPlus, FaList } from 'react-icons/fa';
 
 function AdminNavigationBar() {
+
+    const containerStyles = {
+        fontFamily: "'Montserrat', sans-serif",
+        backgroundColor: 'coral',
+    };
+
   return (
-      <Navbar bg="primary" variant="dark" expand="lg" className="shadow-sm">
+      <Navbar expand="lg" className="shadow-sm" style={containerStyles}>
           <Navbar.Brand href="#home" className="font-weight-bold text-light">Hospital Management System</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">

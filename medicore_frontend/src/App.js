@@ -18,6 +18,12 @@ import Register from './components/Register/Register';
 //Login Page
 import Login from './components/Login/Login';
 
+//Get ALL patients
+import Getallpatients from './components/Admins/GetAllPatients/Getallpatients';
+
+
+
+
 
 function App() {
   return (
@@ -28,6 +34,7 @@ function App() {
 
         <Routes>
           <Route path="/admin/" element={<AdminHomePage />} />
+          <Route path="/admin/getall/" element={<Getallpatients />} />
 
 
           <Route path="/User" element={<PatientHomePage />} />
@@ -36,6 +43,8 @@ function App() {
           
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+         
+          
           
 
           
