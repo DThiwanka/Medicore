@@ -18,8 +18,12 @@ import Register from './components/Register/Register';
 //Login Page
 import Login from './components/Login/Login';
 
-//Get ALL patients
+//Get ALL
 import Getallpatients from './components/Admins/GetAllPatients/Getallpatients';
+import Getalladmins from './components/Admins/GetAllAdmins/Getalladmins';
+
+
+
 
 
 
@@ -34,7 +38,8 @@ function App() {
 
         <Routes>
           <Route path="/admin/" element={<AdminHomePage />} />
-          <Route path="/admin/getall/" element={<Getallpatients />} />
+          <Route path="/admin/viewpatients/" element={<Getallpatients />} />
+          <Route path="/admin/viewadmins/" element={<Getalladmins />} />
 
 
           <Route path="/User" element={<PatientHomePage />} />
@@ -43,6 +48,7 @@ function App() {
           
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+         
          
           
           
