@@ -54,5 +54,36 @@ router.route('/add').post((req, res) => {
 
 });
 
+//Login
+// API Route for Login
+router.post("/login", async (req, res) => {
+    const { email, password } = req.body;
+
+    try {
+        const adm = await Admin.findOne({ email: email, password: password });
+
+        if (adm) {
+            const response = {
+
+                _id: adm._id,
+                name: adm.name,
+                email: adm.email,
+                role: adm.role,
+                // //password,
+                // gender: pat.gender,
+                // bloodGroup: pat.bloodGroup,
+                // address: pat.address,
+                //notes: pat.notes,
+
+            };
+            res.send(response);
+
+        } else {
+            return res.status(400).json({ message: "Login Failed" });
+        }
+    } catch (error) {
+        return res.status(400).json({ error });
+    }
+});
 
 module.exports = router;

@@ -94,5 +94,37 @@ router.route('/get/:id').get(async (req, res) => {
 
 })
 
+//Login
+// API Route for Login
+router.post("/login", async (req, res) => {
+    const { email, password } = req.body;
+
+    try {
+        const pat = await Patient.findOne({ email: email, password: password });
+
+        if (pat) {
+            const response = {
+
+                _id: pat._id,
+                name: pat.name,
+                email: pat.email,
+                //   role: pat.role,
+                //password,
+                gender:pat.gender,
+                bloodGroup:pat.bloodGroup,
+                address:pat.address,
+                notes:pat.notes,
+
+            };
+            res.send(response);
+        
+        } else {
+            return res.status(400).json({ message: "Login Failed" });
+        }
+    } catch (error) {
+        return res.status(400).json({ error });
+    }
+});
+
 
 module.exports = router;
