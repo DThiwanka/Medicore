@@ -4,6 +4,11 @@ const Schema = mongoose.Schema;
 
 const DoctorSchema = new Schema({
 
+    doccode: {
+        type: String,
+        required: true
+    },
+
     name: {
         type: String,
         required: true

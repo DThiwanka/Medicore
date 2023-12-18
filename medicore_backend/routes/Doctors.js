@@ -4,6 +4,7 @@ let Doctor = require('../models/Doctors');
 
 router.route('/add').post((req, res) => {
 
+    const doccode = req.body.doccode;
     const name = req.body.name;
     const email = req.body.email;
     const password = req.body.password;
@@ -14,6 +15,7 @@ router.route('/add').post((req, res) => {
 
     const newDoctor = new Doctor({
 
+        doccode,
         name,
         email,
         password,
@@ -44,9 +46,10 @@ router.route('/').get((req, res) => {
 router.route('/update/:id').post(async (req, res) => {
     let docID = req.params.id;
 
-    const { name, email, password, gender, specialization, assignedPatients, docNotes } = req.body;
+    const { doccode, name, email, password, gender, specialization, assignedPatients, docNotes } = req.body;
 
     const updateDoctor = {
+        doccode,
         name,
         email,
         password,
@@ -94,5 +97,36 @@ router.route('/get/:id').get(async (req, res) => {
 
 })
 
+//Login
+// API Route for Login
+router.post("/login", async (req, res) => {
+    const { doccode, email, password } = req.body;
+
+    try {
+        const doc = await Doctor.findOne({ doccode: doccode, email: email, password: password, });
+
+        if (doc) {
+            const response = {
+
+                _id: doc._id,
+                doccode:doc.doccode,
+                name:doc.name,
+                email:doc.email,
+                password:doc.password,
+                gender:doc.gender,
+                specialization:doc.specialization,
+                assignedPatients:doc.assignedPatients,
+                docNotes:doc.docNotes,
+
+            };
+            res.send(response);
+
+        } else {
+            return res.status(400).json({ message: "Login Failed" });
+        }
+    } catch (error) {
+        return res.status(400).json(error.message);
+    }
+});
 
 module.exports = router;
