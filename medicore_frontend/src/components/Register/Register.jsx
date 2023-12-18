@@ -35,8 +35,6 @@ function Register() {
         function clearform (){
 
             document.getElementById("pat").reset();
-            
-            window.location = 'http://google.com'
 
         };
         
@@ -45,6 +43,10 @@ function Register() {
             
             alert("Account Created Successfully!");
             clearform();
+            
+            setTimeout(() => {
+                window.location.href = '/login'
+            },2000)
 
         }).catch((err)=>{
             alert(err)
