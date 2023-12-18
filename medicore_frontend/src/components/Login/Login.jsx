@@ -23,8 +23,12 @@ function Login() {
                 if (status === 200) {
 
                     localStorage.setItem("currentUser", JSON.stringify(data));
+
+                    //localStorage.setItem("Email", JSON.stringify(email));
+                    //localStorage.setItem("id", JSON.stringify(data._id));
+
                     history({ state: { id: email } });
-                    window.location.href = "/";
+                    window.location.href = "/user/profile";
 
                 } else {
                     setFormError('Invalid Credentials.');

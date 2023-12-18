@@ -7,20 +7,27 @@ router.route('/add').post((req, res) => {
     const name = req.body.name;
     const email = req.body.email;
     const password = req.body.password;
+    const connumber = req.body.connumber;
     const gender = req.body.gender;
     const bloodGroup = req.body.bloodGroup;
     const address = req.body.address;
+    const age = req.body.age;
     const notes = req.body.notes;
+    const createdAt = req.body.createdAt;
+    
 
     const newPatient = new Patient({
 
         name,
         email,
         password,
+        connumber,
         gender,
         bloodGroup,
         address,
-        notes
+        age,
+        notes,
+        
     })
 
     newPatient.save().then(() => {
@@ -44,15 +51,17 @@ router.route('/').get((req, res) => {
 router.route('/update/:id').post(async (req, res) => {
     let patID = req.params.id;
 
-    const { name, email, password, gender, bloodGroup, address, notes } = req.body;
+    const { name, email, password, connumber, gender, bloodGroup, address, age, notes } = req.body;
 
     const updatePatient = {
         name,
         email,
         password,
+        connumber,
         gender,
         bloodGroup,
         address,
+        age,
         notes
     }
 
@@ -110,10 +119,13 @@ router.post("/login", async (req, res) => {
                 email: pat.email,
                 //   role: pat.role,
                 //password,
+                connumber:pat.connumber,
                 gender:pat.gender,
                 bloodGroup:pat.bloodGroup,
-                address:pat.address,
-                notes:pat.notes,
+                address: pat.address,
+                age:pat.age,
+                notes: pat.notes,
+                createdAt:pat.createdAt
 
             };
             res.send(response);

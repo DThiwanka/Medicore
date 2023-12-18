@@ -14,6 +14,9 @@ function Register() {
     const [bloodGroup, setbloodGroup] = useState("");
     const [address, setaddress] = useState("");
     const [notes, setnotes] = useState("");
+    const [connumber, setconnumber] = useState("");
+    const [age, setage] = useState("");
+    
     
 
     function sendData(e) {
@@ -27,7 +30,9 @@ function Register() {
             gender,
             bloodGroup,
             address,
-            notes
+            notes,
+            connumber,
+            age
         }
         //alert("insert");
         //console.log(newPatient);
@@ -91,6 +96,15 @@ function Register() {
                                                     </div>
 
                                                     <div className="form-outline mb-2">
+                                                        <label className="form-label" htmlFor="contactnum">Contact Number</label>
+                                                        <input type="connumber" required id="connumber" className="form-control form-control-lg"
+                                                            onChange={(e) => {
+                                                                setconnumber(e.target.value);
+                                                            }}
+                                                        />
+                                                    </div>
+
+                                                    <div className="form-outline mb-2">
                                                         <label className="form-label" htmlFor="password">Password</label>
                                                         <input type="password" required id="password" className="form-control form-control-lg"
                                                         onChange={(e) => {
@@ -119,8 +133,8 @@ function Register() {
                                                         }}
                                                     >
                                                         <option value="">Select Gender</option>
-                                                        <option value="male">Male</option>
-                                                        <option value="female">Female</option>
+                                                        <option value="Male">Male</option>
+                                                        <option value="Female">Female</option>
                                                         <option value="other">Other</option>
                                                     </select>
                                                 </div>
@@ -143,7 +157,17 @@ function Register() {
                                                         <option value="O-">O-</option>
                                                         
                                                     </select>
-                                                </div>
+                                                    </div>
+                                                    
+
+                                                    <div className="form-outline mb-2">
+                                                        <label className="form-label" htmlFor="age">Age</label>
+                                                        <input type="number" required id="age" className="form-control form-control-lg"
+                                                            onChange={(e) => {
+                                                                setage(e.target.value);
+                                                            }}
+                                                        />
+                                                    </div>
 
 
                                                     <div className="form-outline mb-2">

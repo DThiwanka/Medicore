@@ -6,7 +6,7 @@ const PatientSchema = new Schema({
 
     name: {
         type: String,
-        required : true
+        required: true
     },
 
     email: {
@@ -16,28 +16,40 @@ const PatientSchema = new Schema({
 
     password: {
         type: String,
-        required:true
+        required: true
+    },
+
+    connumber: {
+        type: String,
+        required: true
     },
 
     gender: {
         type: String,
-        required:true
+        required: true
     },
 
     bloodGroup: {
         type: String,
-        required:true
+        required: true
     },
 
     address: {
         type: String,
-        required:true
+        required: true
+    },
+
+    age: {
+        type: String,
+        required: true
     },
 
 
     notes: {
-        type:String,
-    }
+        type: String,
+    },
+
+    createdAt: { type: Date, default: Date.UTC.now }
 
 })
 

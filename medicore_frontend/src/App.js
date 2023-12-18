@@ -21,6 +21,9 @@ import Login from './components/Login/Login';
 //Get ALL
 import Getallpatients from './components/Admins/GetAllPatients/Getallpatients';
 import Getalladmins from './components/Admins/GetAllAdmins/Getalladmins';
+import Patient from './components/Patients/Patient/Patient';
+
+
 
 
 
@@ -48,6 +51,8 @@ function App() {
           
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/user/profile" element={<Patient />} />
+          
          
          
           
