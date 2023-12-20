@@ -22,13 +22,7 @@ import Login from './components/Login/Login';
 import Getallpatients from './components/Admins/GetAllPatients/Getallpatients';
 import Getalladmins from './components/Admins/GetAllAdmins/Getalladmins';
 import Patient from './components/Patients/Patient/Patient';
-
-
-
-
-
-
-
+import NavBar from './components/NavBar/NavBar';
 
 
 
@@ -37,7 +31,14 @@ function App() {
     <div className="app">
       <BrowserRouter>
         
-        {window.location.pathname.startsWith('/admin') ? <AdminNavBar /> : <CusNavBar />}
+        {/* {window.location.pathname.startsWith('/admin') ? <AdminNavBar /> : <CusNavBar />} */}
+
+        {
+          window.location.pathname.startsWith('/admin') ? <AdminNavBar />
+            : window.location.pathname.startsWith('/user') ? <NavBar />
+              : <></>
+        }
+
 
         <Routes>
           <Route path="/admin/" element={<AdminHomePage />} />

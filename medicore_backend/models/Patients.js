@@ -49,7 +49,7 @@ const PatientSchema = new Schema({
         type: String,
     },
 
-    createdAt: { type: Date, default: Date.UTC.now }
+    createdAt: { type: Date, default: Date.now }
 
 })
 

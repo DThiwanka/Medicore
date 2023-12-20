@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 
 function AdminHomePage() {
@@ -14,7 +15,9 @@ function AdminHomePage() {
                                 <Card.Text>
                                     Add new patients, view patient records, and manage their information efficiently.
                                 </Card.Text>
-                                <Button variant="primary" href="#patients">View Patients</Button>
+                                <Link to="/admin/viewpatients/">
+                                    <Button variant="primary" >View Patients</Button>
+                                </Link>
                             </Card.Body>
                         </Card>
                     </Col>
@@ -25,7 +28,9 @@ function AdminHomePage() {
                                 <Card.Text>
                                     Add new doctors, view their profiles, and organize their schedules effortlessly.
                                 </Card.Text>
-                                <Button variant="primary" href="#doctors">View Doctors</Button>
+                                <Link to="/admin/viewdoctors/">
+                                    <Button variant="primary" >View Doctors</Button>
+                                </Link>
                             </Card.Body>
                         </Card>
                     </Col>

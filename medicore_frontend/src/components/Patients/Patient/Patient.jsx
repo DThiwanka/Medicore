@@ -6,6 +6,9 @@ function Patient() {
     const user = JSON.parse(localStorage.getItem('currentUser'));
     console.log(user);
 
+    const roundedDesign = {
+        borderRadius: '10%', padding: '20px'
+    }
 
 
   return (
@@ -26,7 +29,7 @@ function Patient() {
 
                   <div class="row">
                       <div class="col-lg-4">
-                          <div class="card mb-4">
+                          <div class="card mb-4" style={roundedDesign}>
                               <div class="card-body text-center">
                                   <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
                                       class="rounded-circle img-fluid" style={{ width: "130px" }} />
@@ -41,8 +44,8 @@ function Patient() {
                           </div>
 
                       </div>
-                      <div class="col-lg-8">
-                          <div class="card mb-4">
+                      <div class="col-lg-8" >
+                          <div class="card mb-4" style={roundedDesign}>
                               <div class="card-body">
                                   <div class="row">
                                       <div class="col-sm-3">
@@ -101,9 +104,7 @@ function Patient() {
                                   </div>
                               </div>
                           </div>
-                          <div class="row">
-
-                          </div>
+                          
                       </div>
                   </div>
               </div>

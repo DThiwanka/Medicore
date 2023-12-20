@@ -2,6 +2,19 @@ import React from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 
 function PatientHomePage() {
+
+    const buttonStyle = {
+        fontSize: '16px',
+        padding: '10px 24px',
+        marginTop: '50%'
+    };
+
+    const cardStyle = {
+
+        borderRadius: '15px', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', transitionDuration: '0.3s', background: 'linear-gradient(to bottom, lightblue, white)'
+    }
+    
+
     return (
         <Container className="py-4">
             <h1>Welcome to Hospital Services</h1>
@@ -9,37 +22,31 @@ function PatientHomePage() {
 
             <Row className="mt-4">
                 <Col md={4}>
-                    <Card>
+                    <Card className="mb-4" style={cardStyle}>
                         <Card.Body>
-                            <Card.Title>Make an Appointment</Card.Title>
-                            <Card.Text>
-                                Schedule appointments with our doctors easily.
-                            </Card.Text>
-                            <Button variant="primary" href="#make-appointment">Book Now</Button>
+                            <Card.Title style={{ fontSize: '24px', fontWeight: 'bold' }}>Make an Appointment</Card.Title>
+                            <Card.Text style={{ fontSize: '18px' }}>Schedule appointments with our doctors easily.</Card.Text>
+                            <Button variant="primary" href="#make-appointment" style={buttonStyle}>Book Now</Button>
                         </Card.Body>
                     </Card>
                 </Col>
 
                 <Col md={4}>
-                    <Card>
+                    <Card className="mb-4 h-5" style={cardStyle}>
                         <Card.Body>
-                            <Card.Title>View Doctors</Card.Title>
-                            <Card.Text>
-                                Explore our skilled doctors and their profiles.
-                            </Card.Text>
-                            <Button variant="primary" href="#view-doctors">Explore</Button>
+                            <Card.Title style={{ fontSize: '24px', fontWeight: 'bold' }}>View Doctors</Card.Title>
+                            <Card.Text style={{ fontSize: '18px' }}>Explore our skilled doctors and their profiles.</Card.Text>
+                            <Button variant="primary" href="#view-doctors" style={buttonStyle}>Explore</Button>
                         </Card.Body>
                     </Card>
                 </Col>
 
                 <Col md={4}>
-                    <Card>
+                    <Card className="mb-4" style={cardStyle}>
                         <Card.Body>
-                            <Card.Title>Services</Card.Title>
-                            <Card.Text>
-                                Discover various medical services offered.
-                            </Card.Text>
-                            <Button variant="primary" href="#services">Explore Services</Button>
+                            <Card.Title style={{ fontSize: '24px', fontWeight: 'bold' }}>Services</Card.Title>
+                            <Card.Text style={{ fontSize: '18px' }}>Discover various medical services offered.</Card.Text>
+                            <Button variant="primary" href="#services" style={buttonStyle}>Explore Services</Button>
                         </Card.Body>
                     </Card>
                 </Col>
@@ -48,4 +55,4 @@ function PatientHomePage() {
     );
 }
 
-export default PatientHomePage
+export default PatientHomePage;

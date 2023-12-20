@@ -2,6 +2,9 @@ const router = require("express").Router();
 
 let Test = require('../models/TestModel');
 
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
+
 
 router.route('/').get((req, res) => {
 
@@ -14,10 +17,16 @@ router.route('/').get((req, res) => {
 })
 
 
-//Remove After 
-router.route('/add').post((req, res) => {
 
-    const name = req.body.name;
+
+//Remove After 
+router.route('/add').post(async (req, res) => {
+
+
+    const salt = await bcrypt.genSalt(10);
+    let secpass = await bcrypt.hash(req.body.name,salt);
+    
+    const name = secpass;
     const date = req.body.date;
     const time = req.body.time;
 
