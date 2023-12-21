@@ -6,8 +6,9 @@ router.route('/add').post((req, res) => {
 
     const name = req.body.name;
     const date = req.body.date;
+    const time = req.body.time;
     const reason = req.body.reason;
-
+    const info = req.body.info;
     const doctor = req.body.doctor;
     const insurance = req.body.insurance;
     const notes = req.body.notes;
@@ -17,7 +18,9 @@ router.route('/add').post((req, res) => {
 
         name,
         date,
+        time,
         reason,
+        info,
         doctor,
         insurance,
         notes,
@@ -45,12 +48,14 @@ router.route('/').get((req, res) => {
 router.route('/update/:id').post(async (req, res) => {
     let aptID = req.params.id;
 
-    const { name, date, reason, doctor, insurance, notes} = req.body;
+    const { name, date, time, reason, info, doctor, insurance, notes} = req.body;
 
     const updateAppointment = {
         name,
         date,
+        time,
         reason,
+        info,
         doctor,
         insurance,
         notes,

@@ -49,9 +49,13 @@ const PatientSchema = new Schema({
         type: String,
     },
 
-    createdAt: { type: Date, default: Date.now }
+    // createdAt: { type: Date, default: Date.now }
 
-})
+}, {
+    timestamps: true
+}
+
+)
 
 const Patient = mongoose.model("Patient", PatientSchema);
 

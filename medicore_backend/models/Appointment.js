@@ -14,10 +14,21 @@ const AppointmentSchema = new Schema({
         required: true
     },
 
+    time: {
+        type: String,
+        required: true
+    },
+
     reason: {
         type: String,
         required: true
     },
+
+    info: {
+        type: String,
+        required: true
+    },
+
 
     doctor: {
         type: String,
