@@ -1,13 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useAuthentication } from '../../Auth/AuthHelper';
+
 
 function Patient() {
-
-    // const value = localStorage.getItem('currentUser');
-    const user = JSON.parse(localStorage.getItem('currentUser'));
-    console.log(user);
+    
+    const user = useAuthentication();
 
     const roundedDesign = {
         borderRadius: '10%', padding: '20px'
+    }
+
+
+    if (!user) {
+        return null;
     }
 
 

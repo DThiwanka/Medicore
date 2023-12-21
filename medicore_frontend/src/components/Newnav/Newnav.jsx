@@ -5,7 +5,7 @@ import logo from '../../Images/logo.png'
 
 function NewNav() {
     const containerStyles = {
-        backgroundColor: 'coral',
+        // backgroundColor: 'coral',
     };
 
     const linkStyles = {
@@ -14,7 +14,7 @@ function NewNav() {
     };
 
     return (
-        <nav className="navbar navbar-expand-lg" style={containerStyles}>
+        <nav className="navbar navbar-expand-lg p-3 shadow-sm ml-auto" expand="lg" bg="white" sticky="top" style={containerStyles}>
             <div className="container">
                 <Link className="navbar-brand" to="/">
                     <img src={logo} width="40" height="40" alt=""></img>

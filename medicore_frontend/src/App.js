@@ -25,6 +25,8 @@ import Patient from './components/Patients/Patient/Patient';
 import NavBar from './components/NavBar/NavBar';
 
 import Newnav from './components/Newnav/Newnav';
+import Appointment from './components/Patients/Appointment/Appointment';
+import Unauth from './components/Unauth';
 
 
 
@@ -33,7 +35,6 @@ function App() {
     <div className="app">
       <BrowserRouter>
         
-        {/* {window.location.pathname.startsWith('/admin') ? <AdminNavBar /> : <CusNavBar />} */}
 
         {
           window.location.pathname.startsWith('/admin') ? <AdminNavBar />
@@ -43,24 +44,22 @@ function App() {
 
 
         <Routes>
+          
+          <Route path='/unauthorized' exact element={<Unauth/>}/> 
+          <Route path="/" exact element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+
+
+
           <Route path="/admin/" element={<AdminHomePage />} />
           <Route path="/admin/viewpatients/" element={<Getallpatients />} />
           <Route path="/admin/viewadmins/" element={<Getalladmins />} />
 
 
           <Route path="/User" element={<PatientHomePage />} />
-
-          <Route path="/" exact element={<Home />} />
-          
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="/user/appointments" exact element={<Appointment />} />
           <Route path="/user/profile" element={<Patient />} />
-          
-         
-         
-          
-          
-
           
         </Routes>
       </BrowserRouter>

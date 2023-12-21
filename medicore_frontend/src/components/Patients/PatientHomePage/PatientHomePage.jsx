@@ -26,7 +26,7 @@ function PatientHomePage() {
                         <Card.Body>
                             <Card.Title style={{ fontSize: '24px', fontWeight: 'bold' }}>Make an Appointment</Card.Title>
                             <Card.Text style={{ fontSize: '18px' }}>Schedule appointments with our doctors easily.</Card.Text>
-                            <Button variant="primary" href="#make-appointment" style={buttonStyle}>Book Now</Button>
+                            <Button variant="primary" href="user/appointments" style={buttonStyle}>Book Now</Button>
                         </Card.Body>
                     </Card>
                 </Col>
