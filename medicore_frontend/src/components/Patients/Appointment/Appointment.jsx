@@ -4,6 +4,8 @@ import { useAuthentication } from '../../Auth/AuthHelper';
 
 function Appointment() {
 
+    const 
+
     const user = useAuthentication();
 
     if (!user) {

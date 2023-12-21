@@ -32,11 +32,14 @@ connection.once("open", () => {
 const patientRouter = require('./routes/Patients');
 const doctorRouter = require('./routes/Doctors')
 const adminRouter = require('./routes/Admin')
+const appointmentRouter = require('./routes/Appointment')
 const testRouter = require("./routes/Test")
 
 app.use("/patient", patientRouter);
 app.use("/doctor", doctorRouter);
 app.use("/admin", adminRouter);
+app.use("/appointment", appointmentRouter);
+
 app.use("/test", testRouter);
 
 app.listen(PORT, () => {
