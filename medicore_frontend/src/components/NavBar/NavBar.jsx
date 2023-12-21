@@ -28,7 +28,7 @@ function NavBar() {
             <Navbar.Collapse id="navbarNavDropdown">
                 <Nav className="ml-auto">
                     
-                    <Nav.Link as={Link} to="/appointment" className="mx-2 text-uppercase">
+                    <Nav.Link as={Link} to="/user/appointment" className="mx-2 text-uppercase">
                         <FaRegCalendarPlus /> Appointment
                     </Nav.Link>
 

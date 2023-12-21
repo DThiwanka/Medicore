@@ -24,6 +24,8 @@ import Getalladmins from './components/Admins/GetAllAdmins/Getalladmins';
 import Patient from './components/Patients/Patient/Patient';
 import NavBar from './components/NavBar/NavBar';
 
+import Newnav from './components/Newnav/Newnav';
+
 
 
 function App() {
@@ -36,7 +38,7 @@ function App() {
         {
           window.location.pathname.startsWith('/admin') ? <AdminNavBar />
             : window.location.pathname.startsWith('/user') ? <NavBar />
-              : <></>
+              : <Newnav/>
         }
 
 
