@@ -16,6 +16,7 @@ function Register() {
     const [notes, setnotes] = useState("");
     const [connumber, setconnumber] = useState("");
     const [age, setage] = useState("");
+
     
     
 
@@ -32,7 +33,8 @@ function Register() {
             address,
             notes,
             connumber,
-            age
+            age,
+            
         }
         //alert("insert");
         //console.log(newPatient);

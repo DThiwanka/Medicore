@@ -14,6 +14,7 @@ router.route('/add').post((req, res) => {
     const age = req.body.age;
     const notes = req.body.notes;
     const createdAt = req.body.createdAt;
+    const appointment = req.body.appointment;
     
 
     const newPatient = new Patient({
@@ -27,6 +28,7 @@ router.route('/add').post((req, res) => {
         address,
         age,
         notes,
+        appointment
         
     })
 
@@ -138,5 +140,54 @@ router.post("/login", async (req, res) => {
     }
 });
 
+//////////////////////Appointments//////////////////////////////////////
+///
+
+router.route('/addapointment/:id').post(async (req, res) => {
+    let patID = req.params.id;
+
+    const { appointment } = req.body;
+
+    const addapointment = {
+        appointment,
+    }
+
+    const update = await Patient.findByIdAndUpdate(patID, addapointment)
+        .then(() => {
+            res.status(200).send({ status: "User appointment Updated" })
+
+        }).catch((err) => {
+            console.log(err);
+            res.status(500).send({ status: "Error with Updating Data", error: err.message });
+        })
+})
+
+///
+router.route('/addAppointmentz/:id').post(async (req, res) => {
+    try {
+        const patID = req.params.id;
+        const { name, date, time, reason, info, doctor, insurance, notes } = req.body; // Destructure date, time, and reason directly
+
+        const patient = await Patient.findById(patID);
+
+        if (!patient) {
+            return res.status(404).json({ status: 'Patient not found' });
+        }
+
+        // Assuming appointments is an array field in your Patient model
+        patient.appointments.push({ name, date, time, reason, info, doctor, insurance, notes }); // Push the new appointment data as an object
+
+        await patient.save();
+
+        res.status(200).json({ status: 'New appointment added', patient });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ status: 'Error adding new appointment', error: err.message });
+    }
+});
+
+
+///
+////////////////////////////////////////////////////////////////////////
 
 module.exports = router;

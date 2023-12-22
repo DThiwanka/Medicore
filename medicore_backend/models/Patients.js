@@ -49,7 +49,53 @@ const PatientSchema = new Schema({
         type: String,
     },
 
-    // createdAt: { type: Date, default: Date.now }
+    appointments: {
+        type: [
+            {
+                name: {
+                    type: String,
+
+                },
+
+                date: {
+                    type: String,
+
+                },
+
+                time: {
+                    type: String,
+
+                },
+
+                reason: {
+                    type: String,
+
+                },
+
+                info: {
+                    type: String
+
+                },
+
+
+                doctor: {
+                    type: String,
+
+                },
+
+                insurance: {
+                    type: String,
+
+                },
+
+                notes: {
+                    type: String,
+
+                }
+            }
+        ],
+        default: []
+    }
 
 }, {
     timestamps: true
