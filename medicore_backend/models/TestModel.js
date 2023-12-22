@@ -5,19 +5,35 @@ const Schema = mongoose.Schema;
 const TestSchema = new Schema({
 
     name: {
-        type:String,
-    },
-
-    date: {
-        type: Date,
-        default: Date.now,
-    },
-
-    time: {
         type: String,
-        default: this.$where
-    }
+        required: true
+    },
 
+
+    gender: {
+        type: String,
+        required: true
+    },
+
+    cnumber: {
+        type: String,
+        required: true
+    },
+
+    appointment: {
+        date: {
+            type: String,
+            required: true
+        },
+        time: {
+            type: String,
+            required: true
+        },
+        reason: {
+            type: String,
+            required: true
+        }
+    }
 
 },
     { timestamps: true }

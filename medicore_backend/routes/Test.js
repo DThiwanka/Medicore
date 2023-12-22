@@ -2,8 +2,6 @@ const router = require("express").Router();
 
 let Test = require('../models/TestModel');
 
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcryptjs");
 
 
 router.route('/').get((req, res) => {
@@ -23,18 +21,21 @@ router.route('/').get((req, res) => {
 router.route('/add').post(async (req, res) => {
 
 
-    const salt = await bcrypt.genSalt(10);
-    let secpass = await bcrypt.hash(req.body.name,salt);
+   
     
-    const name = secpass;
-    const date = req.body.date;
-    const time = req.body.time;
+    const name = req.body.name;
+    const connumber = req.body.date;
+    const gender = req.body.gender;
+    const cnumber = req.body.cnumber;
+    const appointment = req.body.appointment;
 
     const newTest = new Test({
 
         name,
-        date,
-        time,
+        connumber,
+        cnumber,
+        gender,
+        appointment
         
     })
 
