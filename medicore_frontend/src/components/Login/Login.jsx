@@ -23,9 +23,12 @@ function Login() {
                 if (status === 200) {
 
                     localStorage.setItem("currentUser", JSON.stringify(data));
+                    localStorage.setItem("appointments", JSON.stringify(data.appointment));
+                    // localStorage.setItem("id", JSON.stringify(data._id)); 
+                    console.log(data)
 
                     //localStorage.setItem("Email", JSON.stringify(email));
-                    //localStorage.setItem("id", JSON.stringify(data._id));
+                    
 
                     history({ state: { id: email } });
                     window.location.href = "/user/profile";
