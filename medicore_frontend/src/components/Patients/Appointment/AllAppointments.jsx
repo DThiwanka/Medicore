@@ -4,18 +4,6 @@ import { Link } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 
 
-//Styles
-const tableStyles = {
-    backgroundColor: '#92a8d1',
-
-};
-
-const internalTable = {
-    fontFamily: 'Helvetica',
-    width: '100%',
-}
-
-
 //Functions
 function AllAppointments() {
     const [appointments, setAppointments] = useState([]);
@@ -34,6 +22,9 @@ function AllAppointments() {
     //     getAppointments();
     // }, []);
 
+    const userdetails = JSON.parse(localStorage.getItem('currentUser'));
+    console.log(userdetails._id);
+
     useEffect(() => {
         const getAppointments = () => {
             try {
@@ -48,10 +39,13 @@ function AllAppointments() {
 
         }
         getAppointments();
+       
     }, []);
 
 
+
     return (
+        
         // <div className='container mx-auto'>
             
         //     <div className="mt-3">

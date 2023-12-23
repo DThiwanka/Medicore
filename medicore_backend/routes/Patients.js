@@ -144,24 +144,24 @@ router.post("/login", async (req, res) => {
 //////////////////////Appointments//////////////////////////////////////
 ///
 
-router.route('/addapointment/:id').post(async (req, res) => {
-    let patID = req.params.id;
+// router.route('/addapointment/:id').post(async (req, res) => {
+//     let patID = req.params.id;
 
-    const { appointment } = req.body;
+//     const { appointment } = req.body;
 
-    const addapointment = {
-        appointment,
-    }
+//     const addapointment = {
+//         appointment,
+//     }
 
-    const update = await Patient.findByIdAndUpdate(patID, addapointment)
-        .then(() => {
-            res.status(200).send({ status: "User appointment Updated" })
+//     const update = await Patient.findByIdAndUpdate(patID, addapointment)
+//         .then(() => {
+//             res.status(200).send({ status: "User appointment Updated" })
 
-        }).catch((err) => {
-            console.log(err);
-            res.status(500).send({ status: "Error with Updating Data", error: err.message });
-        })
-})
+//         }).catch((err) => {
+//             console.log(err);
+//             res.status(500).send({ status: "Error with Updating Data", error: err.message });
+//         })
+// })
 
 ///
 router.route('/addAppointmentz/:id').post(async (req, res) => {
@@ -186,6 +186,24 @@ router.route('/addAppointmentz/:id').post(async (req, res) => {
         res.status(500).json({ status: 'Error adding new appointment', error: err.message });
     }
 });
+
+router.route('/appointmentz/:id').get(async (req, res) => {
+    let patID = req.params.id;
+    const appointment = req.params.appointments;
+
+    const pat = await Patient.findById(patID).populate('appointments')
+        // await Patient.findOne(email);
+
+        .then((patient) => {
+            //res.status(200).send({ status: "User Fetched!", patient })
+            res.status(200)
+                .send({status:patient.name,appointments:patient.appointments})
+        }).catch(() => {
+            console.log(err.message);
+            res.status(500).send({ status: "Error with get User!", error: err.message })
+        })
+
+})
 
 
 ///

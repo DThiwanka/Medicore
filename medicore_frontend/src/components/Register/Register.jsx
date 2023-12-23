@@ -87,10 +87,10 @@ function Register() {
                                                         }}
                                                         />
                                                     </div>
-
+                                                    
                                                     <div className="form-outline mb-2">
                                                         <label className="form-label" htmlFor="email">Your Email</label>
-                                                        <input type="email" required id="email" className="form-control form-control-lg"
+                                                        <input type="email" required id="text" className="form-control form-control-lg"
                                                         onChange={(e) => {
                                                             setemail(e.target.value);
                                                         }}

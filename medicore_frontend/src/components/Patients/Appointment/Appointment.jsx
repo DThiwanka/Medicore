@@ -6,6 +6,8 @@ import AllAppointments from './AllAppointments';
 
 function Appointment() {
 
+    const user = useAuthentication();
+
     const [name, setname] = useState("");
     const [date, setdate] = useState("");
     const [time, settime] = useState("");
@@ -14,6 +16,14 @@ function Appointment() {
     const [doctor, setdoctor] = useState("");
     const [insurance, setinsurance] = useState("");
     const [notes, setnotes] = useState("");
+
+    if (!user) {
+        return null;
+    }
+
+    console.log(user._id);
+   
+
 
     function sendData(e) {
         e.preventDefault();
@@ -29,9 +39,13 @@ function Appointment() {
             notes
         }
 
+        
+       
+        // const userdetails = JSON.parse(localStorage.getItem('currentUser'));
+        // console.log(userdetails._id);
 
-
-        axios.post("http://localhost:8070/appointment/add", newAppointment).then(() => {
+        // axios.post("http://localhost:8070/appointment/add", newAppointment).then(() => {
+        axios.post(`http://localhost:8070/patient/addAppointmentz/${user._id}`, newAppointment).then(() => {
             alert("Appointment Added!");
 
             setTimeout(() => {
@@ -43,11 +57,11 @@ function Appointment() {
         })
     }
 
-    const user = useAuthentication();
 
-    if (!user) {
-        return null;
-    }
+
+    // const userdetails = JSON.parse(localStorage.getItem('currentUser'));
+    // console.log(userdetails._id);
+
 
 
 
