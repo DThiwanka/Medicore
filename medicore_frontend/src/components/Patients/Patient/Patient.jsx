@@ -27,7 +27,7 @@ function Patient() {
     const user = useAuthentication();
 
     const roundedDesign = {
-        borderRadius: '10%', padding: '20px'
+        borderRadius: '5%', padding: '20px'
     }
 
 
@@ -49,6 +49,7 @@ function Patient() {
     return (
         <div>
             <section>
+                <h2 className='mt-4 text-center'>User Profile</h2>
                 <div className="container py-5">
                     {/* <div className="row">
                       <div className="col">
@@ -64,7 +65,7 @@ function Patient() {
 
                     <div className="row">
                         <div className="col-lg-4">
-                            <div className="card mb-4" style={roundedDesign}>
+                            <div className="card mt-2" style={roundedDesign}>
                                 <div className="card-body text-center">
                                     <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
                                         className="rounded-circle img-fluid" style={{ width: "130px" }} />

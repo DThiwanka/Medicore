@@ -21,7 +21,7 @@ function Appointment() {
         return null;
     }
 
-    console.log(user._id);
+    //console.log(user._id);
    
 
 
@@ -56,8 +56,6 @@ function Appointment() {
             alert(err)
         })
     }
-
-
 
     // const userdetails = JSON.parse(localStorage.getItem('currentUser'));
     // console.log(userdetails._id);

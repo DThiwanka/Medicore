@@ -9,6 +9,7 @@ import CusNavBar from './components/Patients/PatientNavigationBar/PatientNavigat
 import AdminHomePage from './components/Admins/HomePage/AdminHomePage'
 import PatientHomePage from './components/Patients/PatientHomePage/PatientHomePage';
 
+
 //Landing Page
 import Home from './components/Home/Home';
 
@@ -27,6 +28,7 @@ import NavBar from './components/NavBar/NavBar';
 import Newnav from './components/Newnav/Newnav';
 import Appointment from './components/Patients/Appointment/Appointment';
 import Unauth from './components/Unauth';
+import UpdatePatient from './components/Patients/Patient/UpdatePatient';
 
 
 
@@ -60,6 +62,7 @@ function App() {
           <Route path="/User" element={<PatientHomePage />} />
           <Route path="/user/appointments" exact element={<Appointment />} />
           <Route path="/user/profile" element={<Patient />} />
+          <Route path="/user/profile/update" element={<UpdatePatient />} />
           
         </Routes>
       </BrowserRouter>
