@@ -262,7 +262,7 @@ function Register() {
 
                                             <center>
                                             <div className="d-grid gap-2 xl">
-                                                <button type="submit" className="btn btn-success btn-xl center mb-4">Register</button>
+                                                <Button type="submit" className="btn btn-success btn-xl center mb-4">Register</Button>
                                             </div>
 
                                                 Already have an account? <a href="/login " className="fw-bold text-body"><u>Login here</u></a>

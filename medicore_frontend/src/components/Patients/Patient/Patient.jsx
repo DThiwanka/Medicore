@@ -5,25 +5,6 @@ import { Container } from 'react-bootstrap';
 
 function Patient() {
 
-    // const [appointments, setAppointments] = useState([]);
-
-    // useEffect(() => {
-    //     const getAppointments = () => {
-    //         try {
-    //             let appointmentData = JSON.parse(localStorage.getItem('appointments'));
-    //             if (appointmentData && Array.isArray(appointmentData)) {
-    //                 setAppointments(appointmentData)
-    //                 console.log("Data",appointmentData)
-    //             }
-    //         } catch (error) {
-    //             alert(error.message);
-    //         }
-            
-    //     }
-    //     getAppointments();
-    // }, []);
-
-
     const user = useAuthentication();
 
     const roundedDesign = {
@@ -51,18 +32,6 @@ function Patient() {
             <section>
                 <h2 className='mt-4 text-center'>User Profile</h2>
                 <div className="container py-5">
-                    {/* <div className="row">
-                      <div className="col">
-                          <nav aria-label="breadcrumb" className="bg-light rounded-3 p-3 mb-4">
-                              <ol className="breadcrumb mb-0">
-                                  <li className="breadcrumb-item"><a href="#">Home</a></li>
-                                  <li className="breadcrumb-item"><a href="#">User</a></li>
-                                  <li className="breadcrumb-item active" aria-current="page">User Profile</li>
-                              </ol>
-                          </nav>
-                      </div>
-                  </div> */}
-
                     <div className="row">
                         <div className="col-lg-4">
                             <div className="card mt-2" style={roundedDesign}>
@@ -145,36 +114,6 @@ function Patient() {
                     </div>
                 </div>
             </section>
-
-            {/* <Container>
-                <table className="table table-bordered table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col">Id</th>
-                            <th scope="col">Date</th>
-                            <th scope="col">Reason</th>
-                            <th scope="col">Time</th>
-                            <th scope="col" colSpan={2} style={{ textAlign: "center" }}>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {appointments.map((appointment, index) => (
-                            <tr key={index}>
-                                <td>{index + 1}</td>
-                                <td>{appointment.date}</td>
-                                <td>{appointment.reason}</td>
-                                <td>{appointment.time}</td>
-                                <td>
-                                    <button className='btn btn-success'>UPDATE</button>
-                                </td>
-                                <td>
-                                    <button className='btn btn-danger'>DELETE</button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </Container> */}
         </div>
     )
 }
