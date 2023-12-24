@@ -29,6 +29,10 @@ import Newnav from './components/Newnav/Newnav';
 import Appointment from './components/Patients/Appointment/Appointment';
 import Unauth from './components/Unauth';
 import UpdatePatient from './components/Patients/Patient/UpdatePatient';
+import DnavBar from './components/Doctor/DoctorNavigationBar/DnavBar';
+
+//Doctor
+
 
 
 
@@ -41,6 +45,7 @@ function App() {
         {
           window.location.pathname.startsWith('/admin') ? <AdminNavBar />
             : window.location.pathname.startsWith('/user') ? <NavBar />
+              : window.location.pathname.startsWith('/doctor') ? <DnavBar/>
               : <Newnav/>
         }
 
