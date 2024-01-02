@@ -1,16 +1,24 @@
 import React from 'react'
-import Features from './Features/Features'
-import Footer from './Footer/Footer'
-import Header from './Header/Header'
-import Services from './Services/Services'
+import Hero from './HomeComponents/Hero'
+import Info from './HomeComponents/Info'
+import About from './HomeComponents/About'
+import BookAppointment from './HomeComponents/BookAppointment'
+import Reviews from './HomeComponents/Reviews'
+import Doctors from './HomeComponents/Doctors'
+import Footer from './HomeComponents/Footer'
+
 
 
 function Home() {
   return (
-    <div>
-      <Header />
-      <Features />
-      <Services />
+    <div className="home-section">
+      {/* <Navbar /> */}
+      <Hero />
+      <Info />
+      <About />
+      <BookAppointment />
+      {/* <Reviews /> */}
+      <Doctors />
       <Footer />
     </div>
   )

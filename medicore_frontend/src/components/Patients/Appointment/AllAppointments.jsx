@@ -34,7 +34,7 @@ function AllAppointments() {
         
         <>
             <Container>
-                <table className="table table-bordered table-hover">
+                <table className="table table-bordered table-hover mt-4">
                     <thead>
                         <tr>
                             <th scope="col">Id</th>

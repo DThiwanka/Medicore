@@ -1,6 +1,8 @@
 import React,{useState} from 'react'
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
+import '../Styles/Login.css';
+
 
 function Login() {
 
@@ -44,20 +46,21 @@ function Login() {
     }
     
     return (
-        <div>
+        <div className='basic'>
             <div>
                 <section class="h-90 mt-5 mb-5">
                     <div class="mask d-flex align-items-center h-90">
                         <div class="container h-90 ">
                             <div class="row d-flex justify-content-center align-items-center h-100 ">
-                                <div class="col-5 ">
-                                    <div class="card bg-light"  style={{ borderRadius: "15px" }} >
+                                <div class="col-5">
+                                    
+                                    <div class="card bg-light" style={{ borderRadius: "15px" }} >
                                         <div class="card-body p-5">
-                                            <h2 class="text-uppercase text-center mb-5">Login</h2>
+                                            <h2 class="text-uppercase text-center mb-5 dt-title">Login</h2>
 
                                             <form action='post'>
 
-                                                <div class="form-outline mb-2">
+                                                <div class="form-outline mb-3">
                                                     <label class="form-label" for="form3Example3cg">Your Email</label>
                                                     <input type="email" id="form3Example3cg" class="form-control form-control-lg" value={email} onChange={(e) => {
                                                         setEmail(e.target.value);
@@ -65,7 +68,7 @@ function Login() {
 
                                                 </div>
 
-                                                <div class="form-outline mb-2">
+                                                <div class="form-outline mb-3">
                                                     <label class="form-label" for="form3Example4cg">Password</label>
                                                     <input type="password" id="form3Example4cg" class="form-control form-control-lg" value={password} onChange={(e) => {
                                                         setPassword(e.target.value);
@@ -76,7 +79,7 @@ function Login() {
 
                                                 <div class="d-flex justify-content-center">
                                                     <button type="submit" onClick={handleLogin}
-                                                        class="btn btn-success btn-block btn-lg gradient-custom-4 text-body mt-3">Login</button>
+                                                        class="btnl btn-success btn-block btn-lg gradient-custom-4 text-body mt-3">Login</button>
                                                 </div>
 
                                                 <p class="text-center text-muted mt-3 mb-0">Haven't an account? <a href="/register"
@@ -86,6 +89,7 @@ function Login() {
 
                                         </div>
                                     </div>
+                                    <center/>
                                 </div>
                             </div>
                         </div>
