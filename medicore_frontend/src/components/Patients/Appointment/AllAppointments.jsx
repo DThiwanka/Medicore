@@ -39,8 +39,11 @@ function AllAppointments() {
                         <tr>
                             <th scope="col">Id</th>
                             <th scope="col">Date</th>
-                            <th scope="col">Reason</th>
                             <th scope="col">Time</th>
+                            <th scope="col">Reason</th>
+                            <th scope="col">Doctor</th>
+                            <th scope="col">Notes</th>
+                            <th scope="col">Status</th>
                             <th scope="col" colSpan={2} style={{ textAlign: "center" }}>Action</th>
                         </tr>
                     </thead>
@@ -49,13 +52,16 @@ function AllAppointments() {
                             <tr key={index}>
                                 <td>{index + 1}</td>
                                 <td>{appointment.date}</td>
-                                <td>{appointment.reason}</td>
                                 <td>{appointment.time}</td>
+                                <td>{appointment.reason}</td>
+                                <td>{appointment.doctor}</td>
+                                <td>{appointment.notes}</td>
+                                <td><button className='btn btn-warning btn-block'>Pending</button></td>
                                 <td>
-                                    <button className='btn btn-success'>UPDATE</button>
+                                    <button className='btn btn-success btn-block'>UPDATE</button>
                                 </td>
                                 <td>
-                                    <button className='btn btn-danger'>DELETE</button>
+                                    <button className='btn btn-danger btn-block'>DELETE</button>
                                 </td>
                             </tr>
                         ))}

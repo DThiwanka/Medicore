@@ -95,15 +95,6 @@ function UpdatePatient() {
 
                                         </div>
                                         <hr />
-                                        <div className="row">
-                                            <div className="col-sm-3">
-                                                <p className="mb-0">Account Created On</p>
-                                            </div>
-                                            <div className="col-sm-9">
-                                                <p className="text-muted mb-0">{user.createdAt}</p>
-                                            </div>
-
-                                        </div>
                                     </div>
                                 </div>
                                 <div className='d-flex justify-content-center'>

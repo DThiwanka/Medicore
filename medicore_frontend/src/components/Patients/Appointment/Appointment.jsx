@@ -76,7 +76,7 @@ function Appointment() {
                         <div className="col-lg-6">
                             <Form.Group className="mb-3" controlId="name">
                                 <Form.Label>Name: </Form.Label>
-                                <Form.Control type="text" placeholder="Enter email"
+                                <Form.Control type="text" placeholder="Enter Name" required
                                     onChange={(e) => {
                                         setname(e.target.value)
                                     }}
@@ -85,7 +85,7 @@ function Appointment() {
 
                             <Form.Group className="mb-3" controlId="date">
                                 <Form.Label>Appointment Date: </Form.Label>
-                                <Form.Control type="date" placeholder="Appointment Date"
+                                <Form.Control type="date" placeholder="Appointment Date" required
                                     onChange={(e) => {
                                         setdate(e.target.value)
                                     }}
@@ -94,7 +94,7 @@ function Appointment() {
 
                             <Form.Group className="mb-3" controlId="time">
                                 <Form.Label>Appointment Time: </Form.Label>
-                                <Form.Control type="time" placeholder="Appointment Time"
+                                <Form.Control type="time" placeholder="Appointment Time" required
                                     onChange={(e) => {
                                         settime(e.target.value)
                                     }}
@@ -103,7 +103,7 @@ function Appointment() {
 
                             <Form.Group className="mb-3" controlId="reason">
                                 <Form.Label>Reason: </Form.Label>
-                                <Form.Control type="text" placeholder="Reason"
+                                <Form.Control type="text" placeholder="Reason" required
                                     onChange={(e) => {
                                         setreason(e.target.value)
                                     }}
@@ -114,7 +114,7 @@ function Appointment() {
                         <div className="col-lg-6">
                             <Form.Group className="mb-3" controlId="info">
                                 <Form.Label>Contact Information: </Form.Label>
-                                <Form.Control type="text" placeholder="Information"
+                                <Form.Control type="text" placeholder="Information" required
                                     onChange={(e) => {
                                         setinfo(e.target.value)
                                     }}
@@ -123,7 +123,7 @@ function Appointment() {
 
                             <Form.Group className="mb-3" controlId="doctor">
                                 <Form.Label>Doctor Selection: </Form.Label>
-                                <Form.Control type="text" placeholder="Doctor"
+                                <Form.Control type="text" placeholder="Doctor" required
                                     onChange={(e) => {
                                         setdoctor(e.target.value)
                                     }}
@@ -132,7 +132,7 @@ function Appointment() {
 
                             <Form.Group className="mb-3" controlId="insurance">
                                 <Form.Label>Insurance Information: </Form.Label>
-                                <Form.Control type="text" placeholder="Insurance"
+                                <Form.Control type="text" placeholder="Insurance" required
                                     onChange={(e) => {
                                         setinsurance(e.target.value)
                                     }}
@@ -141,7 +141,7 @@ function Appointment() {
 
                             <Form.Group className="mb-3" controlId="notes">
                                 <Form.Label>Additional Notes: </Form.Label>
-                                <Form.Control type="text" placeholder="Notes"
+                                <Form.Control type="text" placeholder="Notes" required
                                     onChange={(e) => {
                                         setnotes(e.target.value)
                                     }}

@@ -1,6 +1,6 @@
 import React from "react";
 import InformationCard from "./InformationCard";
-import { faHeartPulse, faTruckMedical, faTooth } from "@fortawesome/free-solid-svg-icons";
+import { faHeartPulse, faTruckMedical, faTooth, faCalendarCheck, faHandHoldingMedical, faKitMedical } from "@fortawesome/free-solid-svg-icons";
 import "../Styles/Info.css";
 
 function Info() {
@@ -50,30 +50,21 @@ function Info() {
         />
 
         <InformationCard
-          title="Dental Care"
-          description="Smile with confidence as our Dental Care services cater to all your
-            oral health needs. Our skilled dentists provide a wide range of
-            treatments, from routine check-ups and cleanings to cosmetic
-            procedures and restorative treatments."
-          icon={faTooth}
+          title="Appointment Booking"
+          description="Patients can schedule, reschedule, or cancel appointments with doctors or specialists through the online platform. This feature often includes automated reminders and notifications."
+          icon={faCalendarCheck}
         />
 
         <InformationCard
-          title="Dental Care"
-          description="Smile with confidence as our Dental Care services cater to all your
-            oral health needs. Our skilled dentists provide a wide range of
-            treatments, from routine check-ups and cleanings to cosmetic
-            procedures and restorative treatments."
-          icon={faTooth}
+          title="Specialized Care Units"
+          description="Specific departments or units for managing particular health conditions like cardiology (heart disease), neurology, oncology, orthopedics, etc."
+          icon={faHandHoldingMedical} 
         />
 
         <InformationCard
-          title="Dental Care"
-          description="Smile with confidence as our Dental Care services cater to all your
-            oral health needs. Our skilled dentists provide a wide range of
-            treatments, from routine check-ups and cleanings to cosmetic
-            procedures and restorative treatments."
-          icon={faTooth}
+          title="Pharmacy Management"
+          description="Online prescription services, medication refills, tracking prescriptions, and managing pharmacy inventory."
+          icon={faKitMedical}
         />
 
       </div>

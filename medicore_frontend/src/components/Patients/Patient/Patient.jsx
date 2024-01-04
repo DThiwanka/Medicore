@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthentication } from '../../Auth/AuthHelper';
 import { Container } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 
 function Patient() {
@@ -42,8 +43,10 @@ function Patient() {
                                     <p className="text-muted mb-1">{user.connumber}</p>
                                     <p className="text-muted mb-4">{user._id}</p>
                                     <div className="d-flex justify-content-center mb-2">
-                                        <button type="button" className="btn btn-primary">Follow</button>
-                                        <button type="button" className="btn btn-outline-primary ml-3">Message</button>
+                                        <Link to='update'>
+                                            <button type="button" className="btn btn-outline-primary">Update</button>
+                                        </Link>
+                                        <button type="button" className="btn btn-outline-danger ml-3">Delete</button>
                                     </div>
                                 </div>
                             </div>
