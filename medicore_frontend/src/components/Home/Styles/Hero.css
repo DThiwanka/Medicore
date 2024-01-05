@@ -78,13 +78,13 @@
 }
 /* Image section */
 .hero-image-section {
-    width: 40%;
+    width: 70%;
     max-width: 100%;
     text-align: center;
 }
 .hero-image1 {
     width: 100%;
-    height: auto;
+    height: 100%;
 }
 /* Scroll Btn */
 .scroll-up {

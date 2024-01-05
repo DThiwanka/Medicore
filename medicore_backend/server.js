@@ -25,7 +25,7 @@ mongoose.connect(URL, {
 
 const connection = mongoose.connection;
 connection.once("open", () => {
-    console.log("Mongo Db Connected");  
+    console.log("Mongo Db Connected 💕🚀");  
 })
 
 
@@ -43,5 +43,5 @@ app.use("/appointment", appointmentRouter);
 app.use("/test", testRouter);
 
 app.listen(PORT, () => {
-    console.log(`Server is Runnig on PORT ${PORT}`)
+    console.log(`Server is Runnig on PORT ${PORT} 😎💤`)
 })
