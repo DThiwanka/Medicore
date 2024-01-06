@@ -5,12 +5,13 @@ import { Container } from 'react-bootstrap';
 
 
 //Functions
+
 function AllAppointments() {
     const [appointments, setAppointments] = useState([]);
 
     const userdetails = JSON.parse(localStorage.getItem('currentUser'));
     console.log(userdetails._id);
-
+ 
     useEffect(() => {
         const getAppointments = () => {
             try {
@@ -38,6 +39,7 @@ function AllAppointments() {
                     <thead>
                         <tr>
                             <th scope="col">Id</th>
+                            <th scope="col">Order Id</th>
                             <th scope="col">Date</th>
                             <th scope="col">Time</th>
                             <th scope="col">Reason</th>
@@ -51,6 +53,7 @@ function AllAppointments() {
                         {appointments.map((appointment, index) => (
                             <tr key={index}>
                                 <td>{index + 1}</td>
+                                <td>{appointment._id}</td>
                                 <td>{appointment.date}</td>
                                 <td>{appointment.time}</td>
                                 <td>{appointment.reason}</td>
