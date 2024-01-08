@@ -30,10 +30,11 @@ import Appointment from './components/Patients/Appointment/Appointment';
 import Unauth from './components/Unauth';
 import UpdatePatient from './components/Patients/Patient/UpdatePatient';
 import DnavBar from './components/Doctor/DoctorNavigationBar/DnavBar';
+import NewGetAll from './components/Patients/Patient/NewGetAll';
 
 //Doctor
 
-
+//Test
 
 
 function App() {
@@ -63,11 +64,15 @@ function App() {
           <Route path="/admin/viewpatients/" element={<Getallpatients />} />
           <Route path="/admin/viewadmins/" element={<Getalladmins />} />
 
+          
 
           <Route path="/User" element={<PatientHomePage />} />
           <Route path="/user/appointments" exact element={<Appointment />} />
           <Route path="/user/profile" element={<Patient />} />
           <Route path="/user/profile/update" element={<UpdatePatient />} />
+
+          <Route path="/user/newgetall/" element={<NewGetAll />} />
+
           
         </Routes>
       </BrowserRouter>
