@@ -1,10 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { useAuthentication } from '../../Auth/AuthHelper';
 import { Button, Container } from 'react-bootstrap';
 
 function UpdatePatient() {
 
+    const [userData, setUserData] = useState(null);
+    
     const user = useAuthentication();
+
+    useEffect(() => {
+        const currentUserData = localStorage.getItem('currentUser');
+        if (currentUserData) {
+            const { _id } = JSON.parse(currentUserData);
+            fetchData(_id);
+            console.log(currentUserData)
+        }
+    }, []);
+
+    const fetchData = async (userId) => {
+        try {
+            const response = await axios.get(`http://localhost:8070/patient/get/${userId}`);
+            setUserData(response.data.patient);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
 
     if (!user) {
         return null;

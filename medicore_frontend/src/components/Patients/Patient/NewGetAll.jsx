@@ -1,115 +1,88 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faEnvelope, faPhone, faMapMarkerAlt, faCalendarAlt, faClock, faUserMd, faNotesMedical } from '@fortawesome/free-solid-svg-icons';
 
-function NewGetAll(props) {
-    const [patient, Setpatient] = useState({});
-
-    const { id } = JSON.parse(localStorage.getItem('currentUser'));
-    console.log(id)
-    const navigate = useNavigate();
+const GetAll = () => {
+    const [userData, setUserData] = useState(null);
 
     useEffect(() => {
-        axios
-            .get(`http://localhost:8070/patient/get/${id}`)
-            .then((res) => {
-                Setpatient(res.data);
-            })
-            .catch(() => {
-                console.log('Error from NewGetAll',err);
-            });
-    }, [id]);
+        const currentUserData = localStorage.getItem('currentUser');
+        if (currentUserData) {
+            const { _id } = JSON.parse(currentUserData);
+            fetchData(_id);
+            console.log(currentUserData)
+        }
+    }, []);
 
-    const onDeleteClick = (id) => {
-        axios
-            .delete(`http://localhost:8070/patient/delete/${id}`)
-            .then((res) => {
-                navigate('/');
-            })
-            .catch((err) => {
-                console.log('Error form ShowBookDetails_deleteClick');
-            });
+    const fetchData = async (userId) => {
+        try {
+            const response = await axios.get(`http://localhost:8070/patient/get/${userId}`);
+            setUserData(response.data.patient);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
     };
 
-    const BookItem = (
-        <div>
-            <table className='table table-hover table-dark'>
-                <tbody>
-                    <tr>
-                        <th scope='row'>1</th>
-                        <td>Name</td>
-                        <td>{patient.name}</td>
-                    </tr>
-                    <tr>
-                        <th scope='row'>2</th>
-                        <td>Email</td>
-                        <td>{patient.email}</td>
-                    </tr>
-                    <tr>
-                        <th scope='row'>3</th>
-                        <td>connumber</td>
-                        <td>{patient.connumber}</td>
-                    </tr>
-                    <tr>
-                        <th scope='row'>4</th>
-                        <td>address</td>
-                        <td>{patient.address}</td>
-                    </tr>
-                    <tr>
-                        <th scope='row'>5</th>
-                        <td>age</td>
-                        <td>{patient.age}</td>
-                    </tr>
-                    <tr>
-                        <th scope='row'>6</th>
-                        <td>notes</td>
-                        <td>{patient.notes}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    );
-
     return (
-        <div className='NewGetAll'>
-            <div className='container'>
-                <div className='row'>
-                    <div className='col-md-10 m-auto'>
-                        <br /> <br />
-                        <Link to='/' className='btn btn-outline-warning float-left'>
-                            Show patient List
-                        </Link>
+        <div className="container mt-4">
+            <h1 className="mb-4">User Details</h1>
+            {userData ? (
+                <div className="row">
+                    <div className="col-md-6">
+                        <div className="card mb-4">
+                            <div className="card-body">
+                                <h5 className="card-title">
+                                    <FontAwesomeIcon icon={faUser} /> Personal Information
+                                </h5>
+                                <p className="card-text">
+                                    <FontAwesomeIcon icon={faUser} /> Name: {userData.name}
+                                </p>
+                                <p className="card-text">
+                                    <FontAwesomeIcon icon={faEnvelope} /> Email: {userData.email}
+                                </p>
+                                <p className="card-text">
+                                    <FontAwesomeIcon icon={faPhone} /> Contact Number: {userData.connumber}
+                                </p>
+                                <p className="card-text">
+                                    <FontAwesomeIcon icon={faMapMarkerAlt} /> Address: {userData.address}
+                                </p>
+                                {/* Add more personal details as needed */}
+                            </div>
+                        </div>
                     </div>
-                    <br />
-                    <div className='col-md-8 m-auto'>
-                        <h1 className='display-4 text-center'>patient's Record</h1>
-                        <p className='lead text-center'>View patient's Info</p>
-                        <hr /> <br />
-                    </div>
-                    {/* <div className='col-md-10 m-auto'>{BookItem}</div> */}
-                    <div className='col-md-6 m-auto'>
-                        <button
-                            type='button'
-                            className='btn btn-outline-danger btn-lg btn-block'
-                            onClick={() => {
-                                onDeleteClick(patient._id);
-                            }}
-                        >
-                            Delete patient
-                        </button>
-                    </div>
-                    <div className='col-md-6 m-auto'>
-                        <Link
-                            to={`/edit-patient/${patient._id}`}
-                            className='btn btn-outline-info btn-lg btn-block'
-                        >
-                            Edit patient
-                        </Link>
+                    <div className="col-md-6">
+                        <div className="card">
+                            <div className="card-body">
+                                <h5 className="card-title">
+                                    <FontAwesomeIcon icon={faCalendarAlt} /> Appointments
+                                </h5>
+                                {userData.appointments.map((appointment) => (
+                                    <div key={appointment._id} className="mb-3 border-bottom pb-3">
+                                        <p>
+                                            <FontAwesomeIcon icon={faCalendarAlt} /> Date: {appointment.date}
+                                        </p>
+                                        <p>
+                                            <FontAwesomeIcon icon={faClock} /> Time: {appointment.time}
+                                        </p>
+                                        <p>
+                                            <FontAwesomeIcon icon={faUserMd} /> Doctor: {appointment.doctor}
+                                        </p>
+                                        <p>
+                                            <FontAwesomeIcon icon={faNotesMedical} /> Reason: {appointment.reason}
+                                        </p>
+                                        {/* Add more appointment details here */}
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            ) : (
+                <p>Loading...</p>
+            )}
         </div>
     );
-}
+};
 
-export default NewGetAll;
+export default GetAll;
