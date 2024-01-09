@@ -23,7 +23,7 @@ function Getalladmins() {
     async function getadmins() {
       try {
         const response = await axios.get("http://localhost:8070/admin");
-        setAdmins(response.data); 
+        setAdmins(response.data);
         console.log(response.data)
       } catch (error) {
         alert(error.message);
@@ -61,7 +61,7 @@ function Getalladmins() {
               <th scope="col">Email</th>
               <th scope="col">Password</th>
               <th scope="col">Role</th>
-              <th scope="col" colSpan={2} style={{textAlign:"center"}}>Action</th>
+              <th scope="col" colSpan={2} style={{textAlign:"center" }}>Action</th>
             </tr>
           </thead>
 
@@ -84,6 +84,7 @@ function Getalladmins() {
           </tbody>
         </table>
       </div>
+      
     </div>
   );
 }

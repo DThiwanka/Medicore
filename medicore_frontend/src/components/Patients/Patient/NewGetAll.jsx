@@ -51,35 +51,38 @@ const GetAll = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-6">
-                        <div className="card">
-                            <div className="card-body">
-                                <h5 className="card-title">
-                                    <FontAwesomeIcon icon={faCalendarAlt} /> Appointments
-                                </h5>
+
+                    <div className="col-md-12">
+                        <table className="table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Doctor</th>
+                                    <th>Reason</th>
+                                    {/* Add more table headers for additional appointment details */}
+                                </tr>
+                            </thead>
+                            <tbody>
                                 {userData.appointments.map((appointment) => (
-                                    <div key={appointment._id} className="mb-3 border-bottom pb-3">
-                                        <p>
-                                            <FontAwesomeIcon icon={faCalendarAlt} /> Date: {appointment.date}
-                                        </p>
-                                        <p>
-                                            <FontAwesomeIcon icon={faClock} /> Time: {appointment.time}
-                                        </p>
-                                        <p>
-                                            <FontAwesomeIcon icon={faUserMd} /> Doctor: {appointment.doctor}
-                                        </p>
-                                        <p>
-                                            <FontAwesomeIcon icon={faNotesMedical} /> Reason: {appointment.reason}
-                                        </p>
-                                        {/* Add more appointment details here */}
-                                    </div>
+                                    <tr key={appointment._id}>
+                                        <td>{appointment.date}</td>
+                                        <td>{appointment.time}</td>
+                                        <td>{appointment.doctor}</td>
+                                        <td>{appointment.reason}</td>
+                                        {/* Add more table cells for additional appointment details */}
+                                    </tr>
                                 ))}
-                            </div>
-                        </div>
+                            </tbody>
+                        </table>
                     </div>
+
+                    
                 </div>
             ) : (
                 <p>Loading...</p>
+
+
             )}
         </div>
     );

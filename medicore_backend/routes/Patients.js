@@ -205,6 +205,85 @@ router.route('/appointmentz/:id').get(async (req, res) => {
 
 })
 
+//Appointment get
+router.route('/appointmentz/details/:id').get(async (req, res) => {
+    let appId = req.params.id;
+
+    const app = await Patient.findById(appId.appointment)
+        
+
+        .then((appointment) => {
+            res.status(200).send({ status: "User Fetched!", appointment })
+        }).catch(() => {
+            console.log(err.message);
+            res.status(500).send({ status: "Error with get User!", error: err.message })
+        })
+
+})
+
+////Get One Appointment Under User ID
+
+router.get('/appointments/:patientId/:appointmentId', async (req, res) => {
+    try {
+        const { patientId, appointmentId } = req.params;
+
+        // Assuming you have a 'User' model with an 'appointments' field
+        const patient = await Patient.findById(patientId);
+
+        if (!patient) {
+            return res.status(404).json({ error: 'patient not found' });
+        }
+
+        const appointment = patient.appointments.find(
+            (appointment) => appointment._id.toString() === appointmentId
+        );
+
+        if (!appointment) {
+            return res.status(404).json({ error: 'Appointment not found' });
+        }
+
+        // Return the appointment details
+        res.status(200).json({ appointment });
+
+    } catch (error) {
+        console.error('Error fetching appointment:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+
+////Delete One Appointment Under User ID
+router.delete('/appointments/:patientId/:appointmentId', async (req, res) => {
+    try {
+        const { patientId, appointmentId } = req.params;
+
+        // Assuming you have a 'User' model with an 'appointments' field
+        const patient = await Patient.findById(patientId);
+
+        if (!patient) {
+            return res.status(404).json({ error: 'Patient not found' });
+        }
+
+        const appointmentIndex = patient.appointments.findIndex(
+            (appointment) => appointment._id.toString() === appointmentId
+        );
+
+        if (appointmentIndex === -1) {
+            return res.status(404).json({ error: 'Appointment not found' });
+        }
+
+        // Remove the appointment from the appointments array
+        patient.appointments.splice(appointmentIndex, 1);
+        await patient.save();
+
+        res.status(200).json({ message: 'Appointment deleted successfully' });
+    } catch (error) {
+        console.error('Error deleting appointment:', error);
+        res.status(500).json({ error: 'Internal server error' });
+
+    }
+});
+
 
 ///
 ////////////////////////////////////////////////////////////////////////

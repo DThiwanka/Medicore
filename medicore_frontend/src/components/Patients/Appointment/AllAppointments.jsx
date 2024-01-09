@@ -1,38 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 
 
 //Functions
 
 function AllAppointments() {
-    const [appointments, setAppointments] = useState([]);
-
-    const userdetails = JSON.parse(localStorage.getItem('currentUser'));
-    console.log(userdetails._id);
- 
+    const [userData, setUserData] = useState(null);
+    
     useEffect(() => {
-        const getAppointments = () => {
-            try {
-                let appointmentData = JSON.parse(localStorage.getItem('appointments'));
-                if (appointmentData && Array.isArray(appointmentData)) {
-                    setAppointments(appointmentData)
-                    console.log("Data", appointmentData)
-                }
-            } catch (error) {
-                alert(error.message);
-            }
-
+        const currentUserData = localStorage.getItem('currentUser');
+        if (currentUserData) {
+            const { _id } = JSON.parse(currentUserData);
+            fetchData(_id);
+            console.log(currentUserData)
         }
-        getAppointments();
-       
     }, []);
+
+    const fetchData = async (userId) => {
+        try {
+            const response = await axios.get(`http://localhost:8070/patient/get/${userId}`);
+            setUserData(response.data.patient);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
 
 
 
     return (
-        
         <>
             <Container>
                 <table className="table table-bordered table-hover mt-4">
@@ -49,8 +45,9 @@ function AllAppointments() {
                             <th scope="col" colSpan={2} style={{ textAlign: "center" }}>Action</th>
                         </tr>
                     </thead>
+                    
                     <tbody>
-                        {appointments.map((appointment, index) => (
+                        {userData?.appointments?.map((appointment, index) => (
                             <tr key={index}>
                                 <td>{index + 1}</td>
                                 <td>{appointment._id}</td>

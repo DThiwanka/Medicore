@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useAuthentication } from '../../Auth/AuthHelper';
-import { Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 
@@ -15,7 +14,7 @@ function Patient() {
         if (currentUserData) {
             const { _id } = JSON.parse(currentUserData);
             fetchData(_id);
-            console.log(currentUserData)
+            // console.log(currentUserData)
         }
     }, []);
 
@@ -23,6 +22,7 @@ function Patient() {
         try {
             const response = await axios.get(`http://localhost:8070/patient/get/${userId}`);
             setUserData(response.data.patient);
+            console.log(response)
         } catch (error) {
             console.error('Error fetching data:', error);
         }
