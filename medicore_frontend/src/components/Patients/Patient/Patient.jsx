@@ -38,6 +38,27 @@ function Patient() {
         return null;
     }
 
+    const onDeleteClick = async (userId) => {
+
+        var result = window.confirm(`Are you sure to delete Your Profile?`);
+
+        if (result) {
+            try {
+                await axios.delete(`http://localhost:8070/patient/delete/${userId}`);
+                fetchData(userId); // Refresh data after successful deletion  
+                alert('User Deleted Successfully');
+                localStorage.clear();
+                window.location.href = '/';
+            } catch (err) {
+                console.log('Error from onDeleteClick:', err);
+            }
+        } else {
+            return;
+        }
+
+
+    };
+
     // const userdetails = JSON.parse(localStorage.getItem('currentUser'));
     // //const appointments = JSON.parse(localStorage.getItem('appointment'));
 
@@ -66,7 +87,9 @@ function Patient() {
                                         <Link to='update'>
                                             <button type="button" className="btn btn-outline-primary">Update</button>
                                         </Link>
-                                        <button type="button" className="btn btn-outline-danger ml-3">Delete</button>
+                                        {/* <button type="button" className="btn btn-outline-danger ml-3" onClick={onDeleteClick(user._id)}>Delete</button> */}
+                                        <button type="button" className="btn btn-outline-danger ml-3" onClick={() => onDeleteClick(user._id)}>Delete</button>
+
                                     </div>
                                 </div>
                             </div>

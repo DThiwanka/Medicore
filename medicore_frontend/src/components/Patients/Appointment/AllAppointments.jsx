@@ -27,6 +27,25 @@ function AllAppointments() {
     };
 
 
+    const onDeleteClick = async (userId, appointmentId) => {
+
+        var result = window.confirm(`Are you sure to delete Appoitment ID ? :- ${appointmentId}`);
+
+        if (result) {
+            try {
+                await axios.delete(`http://localhost:8070/patient/appointments/${userId}/${appointmentId}`);
+                fetchData(userId); // Refresh data after successful deletion  
+                alert('Appointment Deleted Successfully');
+            } catch (err) {
+                console.log('Error from onDeleteClick:', err);
+            }
+        } else {
+            return;
+        }
+
+       
+    };
+
 
     return (
         <>
@@ -61,7 +80,7 @@ function AllAppointments() {
                                     <button className='btn btn-success btn-block'>UPDATE</button>
                                 </td>
                                 <td>
-                                    <button className='btn btn-danger btn-block'>DELETE</button>
+                                    <button className='btn btn-danger btn-block' onClick={() => onDeleteClick(userData?._id,appointment._id)}>DELETE</button>
                                 </td>
                             </tr>
                         ))}
