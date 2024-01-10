@@ -5,7 +5,15 @@ import { Button, Container } from 'react-bootstrap';
 
 function UpdatePatient() {
 
-    const [userData, setUserData] = useState(null);
+    const [userData, setUserData] = useState({
+
+        name: '',
+        email: '',
+        connumber: '',
+        notes: '',
+        address: '',
+        
+    });
     
     const user = useAuthentication();
 
@@ -26,6 +34,30 @@ function UpdatePatient() {
             console.error('Error fetching data:', error);
         }
     };
+
+    ///
+    const onSubmit = (e) => {
+        e.preventDefault();
+
+        const data = {
+            name: user.name,
+            email: user.email,
+            connumber: user.connumber,
+            notes: user.notes,
+            notes: user.address,
+        };
+
+        axios
+            .put(`http://localhost:8082/api/books/${user.userId}`, data)
+            .then((res) => {
+                // navigate(`/show-book/${userI}`);
+                window.location('/');
+            })
+            .catch((err) => {
+                console.log('Error in UpdateBookInfo!');
+            });
+    };
+    ///
 
     if (!user) {
         return null;

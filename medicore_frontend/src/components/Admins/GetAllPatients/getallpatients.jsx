@@ -3,16 +3,24 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 
-//Styles
-const tableStyles = {
-  backgroundColor: '#92a8d1',
-
-};
-
 const internalTable = {
   fontFamily: 'Helvetica',
-  width:'100%',
-}
+  maxWidth: '70%', 
+  margin: '0 auto',
+  backgroundColor: '#f5f5f5',
+  border: '1px solid #ddd',
+  borderRadius: '5px',
+  padding: '6px',
+};
+
+const actionCellStyle = {
+  textAlign: 'center',
+};
+
+const tableHeaderStyle = {
+  background: '#92a8d1',
+  color: '#fff',
+};
 
 
 //Functions
@@ -33,8 +41,31 @@ function Getallpatients() {
     getPatients();
   }, []);
 
+
+  const onDeleteClick = async (userId) => {
+
+    var result = window.confirm(`Are you sure to delete Your Profile?`);
+
+    if (result) {
+      try {
+        await axios.delete(`http://localhost:8070/patient/delete/${userId}`);
+        //fetchData(userId); // Refresh data after successful deletion 
+        alert('User Deleted Successfully');
+        localStorage.clear();
+        window.location.reload();
+      } catch (err) {
+        console.log('Error from onDeleteClick:', err);
+      }
+    } else {
+      return;
+    }
+
+
+  };
+
+
   return (
-    <div className='container mx-auto'>
+    <div className='p-3'>
       <br />
       <div>
 
@@ -53,8 +84,8 @@ function Getallpatients() {
       </center>
       <br />
       <div className="mb-3">
-        <table className="table table-bordered table-hover" style={tableStyles}>
-          <thead>
+        <table className="table table-bordered table-hover" style={internalTable}>
+          <thead style={tableHeaderStyle}>
             <tr>
               <th scope="col">Id</th>
               <th scope="col">Name</th>
@@ -64,7 +95,7 @@ function Getallpatients() {
               <th scope="col">BloodGroup</th>
               <th scope="col">Address</th>
               <th scope="col">Notes</th>
-              <th scope="col" colSpan={2} style={{textAlign:"center"}}>Action</th>
+              <th scope="col" colSpan={2} style={actionCellStyle}>Action</th>
             </tr>
           </thead>
 
@@ -79,11 +110,11 @@ function Getallpatients() {
                 <td>{patient.bloodGroup}</td>
                 <td>{patient.address}</td>
                 <td>{patient.notes}</td>
-                <td>
+                <td style={actionCellStyle}>
                   <button className='btn btn-success'>UPDATE</button>
                 </td>
-                <td>
-                  <button className='btn btn-danger'>DELETE</button>
+                <td style={actionCellStyle}>
+                  <button className='btn btn-danger' onClick={() => onDeleteClick(patient._id)}>DELETE</button>
                 </td>
               </tr>
             ))}
