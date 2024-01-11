@@ -50,12 +50,54 @@ router.route('/').get((req, res) => {
 
 })
 
-router.route('/update/:id').post(async (req, res) => {
-    let patID = req.params.id;
+// router.route('/update/:id').put(async (req, res) => {
+//     let patID = req.params.id;
+//     // const currentUserData = localStorage.getItem('currentUser');
+//     // const patID = JSON.parse(currentUserData)._id;
 
+//     const { name, email, password, connumber, gender, bloodGroup, address, age, notes } = req.body;
+
+//     const updatePatient = {
+//         name,
+//         email,
+//         password,
+//         connumber,
+//         gender,
+//         bloodGroup,
+//         address,
+//         age,
+//         notes
+//     }
+
+//     const update = await Patient.findByIdAndUpdate(patID)
+//         .then(() => {
+//             res.status(200).send({ data: update })
+
+//     }).catch((err) => {
+//         console.log(err);
+//         res.status(500).send({ status: "Error with Updating Data", error: err.message });
+//     })
+// })
+
+// router.route('/delete/:id').delete(async (req, res) => {
+//     let patID = req.params.id;
+
+//     await Patient.findByIdAndDelete(patID)
+//         .then(() => {
+//             res.status(200).send({ status: "User Deleted!" },)
+//         }).catch((err) => {
+//             console.log(err.message),
+//                 res.status(500).send({ status: "Error With Delete User!", error: err.message });
+//         })
+// })
+
+//
+router.route("/update/:id").put(async (req, res) => {
+    let _id = req.params.id;
     const { name, email, password, connumber, gender, bloodGroup, address, age, notes } = req.body;
 
     const updatePatient = {
+        _id,
         name,
         email,
         password,
@@ -65,29 +107,14 @@ router.route('/update/:id').post(async (req, res) => {
         address,
         age,
         notes
+
     }
+    const uppat = await Patient.findByIdAndUpdate(_id, updatePatient)
+    res.status(200).send({ data: uppat });
 
-    const update = await Patient.findByIdAndUpdate(patID, updatePatient)
-        .then(() => {
-        res.status(200).send({ status: "User Updated"})
 
-    }).catch((err) => {
-        console.log(err);
-        res.status(500).send({ status: "Error with Updating Data", error: err.message });
-    })
 })
-
-router.route('/delete/:id').delete(async (req, res) => {
-    let patID = req.params.id;
-
-    await Patient.findByIdAndDelete(patID)
-        .then(() => {
-            res.status(200).send({ status: "User Deleted!" })
-        }).catch((err) => {
-            console.log(err.message),
-                res.status(500).send({ status: "Error With Delete User!", error: err.message });
-        })
-})
+//
 
 
 router.route('/get/:id').get(async (req, res) => {
@@ -98,9 +125,9 @@ router.route('/get/:id').get(async (req, res) => {
         
         .then((patient) => {
             res.status(200).send({ status: "User Fetched!", patient })
-        }).catch(() => {
-            console.log(err.message);
-            res.status(500).send({ status: "Error with get User!", error: err.message })
+        }).catch((err) => {
+            console.log(err);
+            res.status(500).send({ status: "Error with get User!", err })
         })
 
 })

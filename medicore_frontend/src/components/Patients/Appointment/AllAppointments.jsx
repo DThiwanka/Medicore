@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Container } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 
 //Functions
@@ -46,6 +47,15 @@ function AllAppointments() {
        
     };
 
+    // function OnClickUpdate() {
+    //     var result = window.confirm(`Are you sure to Update Your Profile?`);
+    //     if (result) {
+            
+    //     } else {
+    //         return;
+    //     }
+    // }
+
 
     return (
         <>
@@ -77,7 +87,11 @@ function AllAppointments() {
                                 <td>{appointment.notes}</td>
                                 <td><button className='btn btn-warning btn-block'>Pending</button></td>
                                 <td>
-                                    <button className='btn btn-success btn-block'>UPDATE</button>
+                                    <Link
+                                        to={`/user/updateappointment/`}
+                                    >
+                                        <button className='btn btn-success btn-block' >UPDATE</button>
+                                    </Link>
                                 </td>
                                 <td>
                                     <button className='btn btn-danger btn-block' onClick={() => onDeleteClick(userData?._id,appointment._id)}>DELETE</button>
@@ -89,6 +103,7 @@ function AllAppointments() {
             </Container>
         </>
     );
+
 }
 
 export default AllAppointments;

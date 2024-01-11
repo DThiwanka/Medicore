@@ -31,6 +31,8 @@ import Unauth from './components/Unauth';
 import UpdatePatient from './components/Patients/Patient/UpdatePatient';
 import DnavBar from './components/Doctor/DoctorNavigationBar/DnavBar';
 import NewGetAll from './components/Patients/Patient/NewGetAll';
+import UpdateAppointment from './components/Patients/Appointment/UpdateAppointment';
+
 
 //Doctor
 
@@ -70,6 +72,7 @@ function App() {
           <Route path="/user/appointments" exact element={<Appointment />} />
           <Route path="/user/profile" element={<Patient />} />
           <Route path="/user/profile/update" element={<UpdatePatient />} />
+          <Route path='/user/updateappointment/' element={<UpdateAppointment />} />
 
           <Route path="/user/newgetall/" element={<NewGetAll />} />
 

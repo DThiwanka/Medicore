@@ -2,69 +2,92 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useAuthentication } from '../../Auth/AuthHelper';
 import { Button, Container } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
-function UpdatePatient() {
+function UpdatePatient(props) {
+    // const [userData, setUserData] = useState({
+    //     name: '',
+    //     email: '',
+    //     connumber: '',
+    //     notes: '',
+    //     address: '',
+    // });
 
-    const [userData, setUserData] = useState({
+    const id = localStorage.getItem('currentUser') ? JSON.parse(localStorage.getItem('currentUser'))._id : '';
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [connumber, setConnumber] = useState('');
+    const [notes, setNotes] = useState('');
+    const [address, setAddress] = useState('');
 
-        name: '',
-        email: '',
-        connumber: '',
-        notes: '',
-        address: '',
-        
-    });
-    
-    const user = useAuthentication();
+
+    console.log(id);
+    console.log(currentUser.name); 
 
     useEffect(() => {
-        const currentUserData = localStorage.getItem('currentUser');
-        if (currentUserData) {
-            const { _id } = JSON.parse(currentUserData);
-            fetchData(_id);
-            console.log(currentUserData)
+        async function getPatient() {
+           
+            const response = await axios.get(`http://localhost:8070/patient/get/${id}`);
+            console.log(response.data);
+            setName(response.data.name);
+            setEmail(response.data.email);
+            setConnumber(response.data.connumber);
+            setNotes(response.data.notes);
+            setAddress(response.data.address);
         }
+        getPatient();
     }, []);
 
-    const fetchData = async (userId) => {
-        try {
-            const response = await axios.get(`http://localhost:8070/patient/get/${userId}`);
-            setUserData(response.data.patient);
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
-    };
+    // const onChange = (e) => {
+    //     const { name, value } = e.target;
+    //     setUserData((prevUserData) => ({
+    //         ...prevUserData,
+    //         [name]: value,
+    //     }));
+    // };
 
-    ///
-    const onSubmit = (e) => {
+    // const onSubmit = (e) => {
+    //     e.preventDefault();
+
+    //     const data = {
+    //         name: userData.name,
+    //         email: userData.email,
+    //         connumber: userData.connumber,
+    //         notes: userData.notes,
+    //         address: userData.address,
+    //     };
+
+    function sendData(e) {
         e.preventDefault();
 
-        const data = {
-            name: user.name,
-            email: user.email,
-            connumber: user.connumber,
-            notes: user.notes,
-            notes: user.address,
-        };
+        const newPatient = {
+            name,
+            email,
+            connumber,
+            notes,
+            address,
+        }
 
-        axios
-            .put(`http://localhost:8082/api/books/${user.userId}`, data)
-            .then((res) => {
-                // navigate(`/show-book/${userI}`);
-                window.location('/');
-            })
-            .catch((err) => {
-                console.log('Error in UpdateBookInfo!');
-            });
+        var result = window.confirm(`Are you sure to Update Your Profile?`);
+        if (result) {
+            axios.put(`http://localhost:8070/patient/update/${id}`, newPatient)
+                .then((res) => {
+                    console.log(res.data);
+                    window.location.reload();
+                })
+                .catch((err) => {
+                    console.log('Error in UpdateBookInfo:', err);
+                });
+        } else { 
+            return;
+        }
+    
+
+        
     };
-    ///
-
-    if (!user) {
-        return null;
-    }
 
     const roundedDesign = {
-        borderRadius: '10%', padding: '20px'
+        borderRadius: '5%', padding: '20px'
     }
 
     return (
@@ -79,9 +102,9 @@ function UpdatePatient() {
                                 <div className="card-body text-center">
                                     <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
                                         className="rounded-circle img-fluid" style={{ width: "130px" }} />
-                                    <h5 className="my-3">{user.name}</h5>
-                                    <p className="text-muted mb-1">{user.connumber}</p>
-                                    <p className="text-muted mb-4">{user._id}</p>
+                                    <h5 className="my-3">{}</h5>
+                                    <p className="text-muted mb-1">{connumber}</p>
+                                    <p className="text-muted mb-4">{id}</p>
                                     <div className="d-flex justify-content-center mb-2">
                                         <button type="button" className="btn btn-primary">Follow</button>
                                         <button type="button" className="btn btn-outline-primary ml-3">Message</button>
@@ -94,7 +117,7 @@ function UpdatePatient() {
                         
 
                         <div className="col-lg-8" >
-                            <form>
+                            <form onSubmit={sendData}>
                                 <div className="card mb-4 border-0">
                                     <div className="card-body">
                                         <div className="row">
@@ -103,7 +126,7 @@ function UpdatePatient() {
                                             </div>
                                             <div className="col-sm-9">
                                                
-                                                <input type="text" className='form-control form-control-sm border-top-0' value={user.name} />
+                                                <input type="text" className='form-control form-control-sm border-top-0' name='name' defaultValue={name} onChange={(e) => {setName(e.target.value);}} />
                                             </div>
                                         </div>
                                         <hr />
@@ -113,7 +136,7 @@ function UpdatePatient() {
                                             </div>
                                             <div className="col-sm-9">
                                                
-                                                <input type="text" className='form-control form-control-sm border-top-0' value={user.email} />
+                                                <input type="text" className='form-control form-control-sm border-top-0' name='email' defaultValue={email} onChange={(e) => {setEmail(e.target.value);}} />
                                             </div>
                                         </div>
                                         <hr />
@@ -123,7 +146,7 @@ function UpdatePatient() {
                                             </div>
                                             <div className="col-sm-9">
                                                
-                                                <input type="text" className='form-control form-control-sm border-top-0' value={user.connumber} />
+                                                <input type="text" className='form-control form-control-sm border-top-0' name='connumber' defaultValue={connumber} onChange={(e) => {setConnumber(e.target.value);}} />
                                             </div>
                                         </div>
                                         <hr />
@@ -133,7 +156,7 @@ function UpdatePatient() {
                                             </div>
                                             <div className="col-sm-9">
                                                 
-                                                <input type="text" className='form-control form-control-sm border-top-0' value={user.notes} />
+                                                <input type="text" className='form-control form-control-sm border-top-0' name='notes' defaultValue={notes} onChange={(e) => {setNotes(e.target.value);}} />
                                             </div>
                                         </div>
                                         <hr />
@@ -143,7 +166,7 @@ function UpdatePatient() {
                                             </div>
                                             <div className="col-sm-9">
                                                 
-                                                <input type="text" className='form-control form-control-sm border-top-0' value={user.address} />
+                                                <input type="text" className='form-control form-control-sm border-top-0' name='address' defaultValue={address} onChange={(e) => {setAddress(e.target.value);}} />
                                             </div>
 
                                         </div>
@@ -152,7 +175,7 @@ function UpdatePatient() {
                                 </div>
                                 <div className='d-flex justify-content-center'>
                                 <Button className='mr-3 btn btn-success' type="submit">Submit</Button>
-                                    <Button className='danger btn btn-danger' type="reset">Submit</Button>
+                                    <Button className='danger btn btn-danger' type="reset">Rest</Button>
                                 </div>
                             </form>
                             </div>
