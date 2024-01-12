@@ -44,7 +44,7 @@ function Getallpatients() {
 
   const onDeleteClick = async (userId) => {
 
-    var result = window.confirm(`Are you sure to delete Your Profile?`);
+    var result = window.confirm(`Are you sure to delete This Profile? :- ${userId}`);
 
     if (result) {
       try {
@@ -57,6 +57,7 @@ function Getallpatients() {
         console.log('Error from onDeleteClick:', err);
       }
     } else {
+      alert('User Deletion Cancelled');
       return;
     }
 

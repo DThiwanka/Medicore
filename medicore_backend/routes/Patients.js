@@ -79,17 +79,17 @@ router.route('/').get((req, res) => {
 //     })
 // })
 
-// router.route('/delete/:id').delete(async (req, res) => {
-//     let patID = req.params.id;
+router.route('/delete/:id').delete(async (req, res) => {
+    let patID = req.params.id;
 
-//     await Patient.findByIdAndDelete(patID)
-//         .then(() => {
-//             res.status(200).send({ status: "User Deleted!" },)
-//         }).catch((err) => {
-//             console.log(err.message),
-//                 res.status(500).send({ status: "Error With Delete User!", error: err.message });
-//         })
-// })
+    await Patient.findByIdAndDelete(patID)
+        .then(() => {
+            res.status(200).send({ status: "User Deleted!" },)
+        }).catch((err) => {
+            console.log(err.message),
+                res.status(500).send({ status: "Error With Delete User!", error: err.message });
+        })
+})
 
 //
 router.route("/update/:id").put(async (req, res) => {

@@ -14,7 +14,7 @@ function UpdatePatient(props) {
     // });
 
     const id = localStorage.getItem('currentUser') ? JSON.parse(localStorage.getItem('currentUser'))._id : '';
-    const [name, setName] = useState('');
+    const [name, setName] = useState(`${JSON.parse(localStorage.getItem('currentUser')).name}`);
     const [email, setEmail] = useState('');
     const [connumber, setConnumber] = useState('');
     const [notes, setNotes] = useState('');
@@ -22,13 +22,13 @@ function UpdatePatient(props) {
 
 
     console.log(id);
-    console.log(currentUser.name); 
+    //console.log(currentUser.name); 
 
     useEffect(() => {
         async function getPatient() {
            
             const response = await axios.get(`http://localhost:8070/patient/get/${id}`);
-            console.log(response.data);
+            console.log(name);
             setName(response.data.name);
             setEmail(response.data.email);
             setConnumber(response.data.connumber);
@@ -36,7 +36,7 @@ function UpdatePatient(props) {
             setAddress(response.data.address);
         }
         getPatient();
-    }, []);
+    }, [id]);
 
     // const onChange = (e) => {
     //     const { name, value } = e.target;
@@ -126,7 +126,7 @@ function UpdatePatient(props) {
                                             </div>
                                             <div className="col-sm-9">
                                                
-                                                <input type="text" className='form-control form-control-sm border-top-0' name='name' defaultValue={name} onChange={(e) => {setName(e.target.value);}} />
+                                                <input type="text" className='form-control form-control-sm' name='name' defaultValue={name} onChange={(e) => {setName(e.target.value);}} />
                                             </div>
                                         </div>
                                         <hr />
@@ -136,7 +136,7 @@ function UpdatePatient(props) {
                                             </div>
                                             <div className="col-sm-9">
                                                
-                                                <input type="text" className='form-control form-control-sm border-top-0' name='email' defaultValue={email} onChange={(e) => {setEmail(e.target.value);}} />
+                                                <input type="text" className='form-control form-control-sm' name='email' defaultValue={email} onChange={(e) => {setEmail(e.target.value);}} />
                                             </div>
                                         </div>
                                         <hr />
@@ -146,7 +146,7 @@ function UpdatePatient(props) {
                                             </div>
                                             <div className="col-sm-9">
                                                
-                                                <input type="text" className='form-control form-control-sm border-top-0' name='connumber' defaultValue={connumber} onChange={(e) => {setConnumber(e.target.value);}} />
+                                                <input type="text" className='form-control form-control-sm' name='connumber' defaultValue={connumber} onChange={(e) => {setConnumber(e.target.value);}} />
                                             </div>
                                         </div>
                                         <hr />
@@ -156,7 +156,7 @@ function UpdatePatient(props) {
                                             </div>
                                             <div className="col-sm-9">
                                                 
-                                                <input type="text" className='form-control form-control-sm border-top-0' name='notes' defaultValue={notes} onChange={(e) => {setNotes(e.target.value);}} />
+                                                <input type="text" className='form-control form-control-sm' name='notes' defaultValue={notes} onChange={(e) => {setNotes(e.target.value);}} />
                                             </div>
                                         </div>
                                         <hr />
@@ -166,7 +166,7 @@ function UpdatePatient(props) {
                                             </div>
                                             <div className="col-sm-9">
                                                 
-                                                <input type="text" className='form-control form-control-sm border-top-0' name='address' defaultValue={address} onChange={(e) => {setAddress(e.target.value);}} />
+                                                <input type="text" className='form-control form-control-sm' name='address' defaultValue={address} onChange={(e) => {setAddress(e.target.value);}} />
                                             </div>
 
                                         </div>

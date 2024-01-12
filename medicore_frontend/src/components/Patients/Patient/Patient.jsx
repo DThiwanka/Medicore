@@ -9,14 +9,14 @@ function Patient() {
 
     const user = useAuthentication();
 
-    useEffect(() => {
-        const currentUserData = localStorage.getItem('currentUser');
-        if (currentUserData) {
-            const { _id } = JSON.parse(currentUserData);
-            fetchData(_id);
-            // console.log(currentUserData)
-        }
-    }, []);
+    // useEffect(() => {
+    //     const currentUserData = localStorage.getItem('currentUser');
+    //     if (currentUserData) {
+    //         const { _id } = JSON.parse(currentUserData);
+    //         fetchData(_id);
+    //         // console.log(currentUserData)
+    //     }
+    // }, []);
 
     const fetchData = async (userId) => {
         try {
