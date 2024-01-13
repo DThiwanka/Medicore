@@ -93,28 +93,21 @@ router.route('/delete/:id').delete(async (req, res) => {
 
 //
 router.route("/update/:id").put(async (req, res) => {
-    let _id = req.params.id;
+    //let _id = req.params.id;
+    let id = req.params.id;
     const { name, email, password, connumber, gender, bloodGroup, address, age, notes } = req.body;
 
-    const updatePatient = {
-        _id,
-        name,
-        email,
-        password,
-        connumber,
-        gender,
-        bloodGroup,
-        address,
-        age,
-        notes
-
+    try {
+        const updateedPatient = await Patient.findByIdAndUpdate(id, { name, email, password, connumber, gender, bloodGroup, address, age, notes });
+        res.json(updateedPatient)
+    } catch (error) {
+        res.status(500).json({ message: error.message });
     }
-    const uppat = await Patient.findByIdAndUpdate(_id, updatePatient)
-    res.status(200).send({ data: uppat });
 
 
 })
 //
+
 
 
 router.route('/get/:id').get(async (req, res) => {
