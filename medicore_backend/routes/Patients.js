@@ -97,9 +97,23 @@ router.route("/update/:id").put(async (req, res) => {
     let id = req.params.id;
     const { name, email, password, connumber, gender, bloodGroup, address, age, notes } = req.body;
 
+    const updatePatient = {
+        name,
+        email,
+        password,
+        connumber,
+        gender,
+        bloodGroup,
+        address,
+        age,
+        notes
+    };
+
     try {
-        const updateedPatient = await Patient.findByIdAndUpdate(id, { name, email, password, connumber, gender, bloodGroup, address, age, notes });
-        res.json(updateedPatient)
+        const update = await Patient.findByIdAndUpdate(id, updatePatient).then(() => {
+            res.status(200).send({ status: "User Updated!", updatePatient }) });
+        
+        ////res.json(updateedPatient)
     } catch (error) {
         res.status(500).json({ message: error.message });
     }

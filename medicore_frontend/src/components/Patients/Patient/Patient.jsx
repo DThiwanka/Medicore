@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useAuthentication } from '../../Auth/AuthHelper';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 
 function Patient() {
@@ -17,6 +17,7 @@ function Patient() {
     //         // console.log(currentUserData)
     //     }
     // }, []);
+    const { id } = useParams();
 
     const fetchData = async (userId) => {
         try {
@@ -84,9 +85,9 @@ function Patient() {
                                     <p className="text-muted mb-1">{user.connumber}</p>
                                     <p className="text-muted mb-4">{user._id}</p>
                                     <div className="d-flex justify-content-center mb-2">
-                                        <Link to='update'>
+                                        <a href={`update/${user._id}`}>
                                             <button type="button" className="btn btn-outline-primary">Update</button>
-                                        </Link>
+                                        </a>
                                         {/* <button type="button" className="btn btn-outline-danger ml-3" onClick={onDeleteClick(user._id)}>Delete</button> */}
                                         <button type="button" className="btn btn-outline-danger ml-3" onClick={() => onDeleteClick(user._id)}>Delete</button>
 

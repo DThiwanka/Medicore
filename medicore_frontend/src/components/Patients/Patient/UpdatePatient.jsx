@@ -2,56 +2,100 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useAuthentication } from '../../Auth/AuthHelper';
 import { Button, Container } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import Patient from './Patient';
 
 const UpdatePatient = () => {
-    const [userData, setUserData] = useState({
-        id: localStorage.getItem('currentUser') ? JSON.parse(localStorage.getItem('currentUser'))._id: '',
-        name: '',
-        email: '',
-        connumber: '',
-        notes: '',
-        address: '',
-    });
+    // const [userData, setUserData] = useState({
+    //     id: localStorage.getItem('currentUser') ? JSON.parse(localStorage.getItem('currentUser'))._id: '',
+    //     name: '',
+    //     email: '',
+    //     connumber: '',
+    //     notes: '',
+    //     address: '',
+    // });
+
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [connumber, setConnumber] = useState('');
+    const [notes, setNotes] = useState('');
+    const [address, setAddress] = useState('');
+
+    const navigate = useNavigate();
+
+    const { id } = useParams();
 
     
-    useEffect(() => { 
-        const fetchUser = async () => {
-            try {
-                const response = await axios.get(`http://localhost:8070/patient/get/${userData.id}`);
-                console.log(response.data);
-                setUserData(response.data);
-            } catch (error) {
-                console.log(error);
-            }
-        };
-        fetchUser();
-    },
-        //[Patient.id]
-    );
-
-    const handleChange = (e) => {
-        setUserData({ ...userData, [e.target.name]: e.target.value });
-    };
+    // useEffect(() => {
+    //     const fetchUser = async () => {
+    //         try {
+    //             const response = await axios.get(`http://localhost:8070/patient/get/${userData.id}`);
+    //             console.log(response.data);
+    //             setUserData(response.data);
+    //         } catch (error) {
+    //             console.log(error);
+    //         }
+    //     };
+    //     fetchUser();
+    // },
+    //     //[Patient.id]
+    // );
     
-    const handleSubmit = async (e) => { 
+    useEffect(() => {
+        axios.get(`http://localhost:8070/patient/get/${id}`).then((res) => {
+            setName(res.data.patient.name);
+            setEmail(res.data.patient.email);
+            setConnumber(res.data.patient.connumber);
+            setNotes(res.data.patient.notes);
+            setAddress(res.data.patient.address);
+
+            console.log(res.data.patient);
+        }).catch((err) => {
+            alert(err.message);
+        });
+    }, [id]);
+
+    function sendData(e) {
         e.preventDefault();
-        try {
-            await axios.put(`http://localhost:8070/patient/update/${userData.id}`, userData);
-            const data = {
-                    
-                    name: userData.name,
-                    email: userData.email,
-                    connumber: userData.connumber,
-                    notes: userData.notes,
-                    address: userData.address,
-            };
-            console.log(data);
-        } catch (error) {
-            console.log(error);
+
+        const newPatient = {
+            name,
+            email,
+            connumber,
+            notes,
+            address,
         }
+
+        axios.put(`http://localhost:8070/patient/update/${id}`, newPatient).then(() => {
+            alert("Patient Updated");
+            navigate(`/user/profile/${id}`);
+        }).catch((err) => {
+            alert(err);
+        })
     }
+        
+
+    // const handleChange = (e) => {
+    //     setUserData({ ...userData, [e.target.name]: e.target.value });
+    // };
+    
+    // const handleSubmit = async (e) => { 
+    //     e.preventDefault();
+    //     try {
+    //         await axios.put(`http://localhost:8070/patient/update/${userData.id}`, userData);
+    //         const data = {
+                    
+    //                 name: userData.name,
+    //                 email: userData.email,
+    //                 connumber: userData.connumber,
+    //                 notes: userData.notes,
+    //                 address: userData.address,
+    //         };
+    //         console.log(data);
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // }
 
     // const onChange = (e) => {
     //     const { name, value } = e.target;
@@ -118,9 +162,9 @@ const UpdatePatient = () => {
                                 <div className="card-body text-center">
                                     <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
                                         className="rounded-circle img-fluid" style={{ width: "130px" }} />
-                                    <h5 className="my-3">{}</h5>
-                                    <p className="text-muted mb-1">{userData.connumber}</p>
-                                    <p className="text-muted mb-4">{userData.id}</p>
+                                    <h5 className="my-3">{name}</h5>
+                                    <p className="text-muted mb-1">{connumber}</p>
+                                    <p className="text-muted mb-4">{id}</p>
                                     <div className="d-flex justify-content-center mb-2">
                                         <button type="button" className="btn btn-primary">Follow</button>
                                         <button type="button" className="btn btn-outline-primary ml-3">Message</button>
@@ -133,7 +177,7 @@ const UpdatePatient = () => {
                         
 
                         <div className="col-lg-8" >
-                            <form onSubmit={handleSubmit}>
+                            <form onSubmit={sendData}>
                                 <div className="card mb-4 border-0">
                                     <div className="card-body">
                                         <div className="row">
@@ -142,7 +186,10 @@ const UpdatePatient = () => {
                                             </div>
                                             <div className="col-sm-9">
                                                
-                                                <input type="text" className='form-control form-control-sm' name='name' value={userData.name} onChange={handleChange} />
+                                                <input type="text" className='form-control form-control-sm' name='name' value={name} onChange={(e) => {
+                                                    setName(e.target.value);
+                                                }} />
+
                                             </div>
                                         </div>
                                         <hr />
@@ -152,7 +199,10 @@ const UpdatePatient = () => {
                                             </div>
                                             <div className="col-sm-9">
                                                
-                                                <input type="text" className='form-control form-control-sm' name='email' value={userData.email} onChange={handleChange} />
+                                                <input type="text" className='form-control form-control-sm' name='email' value={email} onChange={(e) => {
+                                                    setEmail(e.target.value);
+                                                }} />
+
                                             </div>
                                         </div>
                                         <hr />
@@ -162,7 +212,9 @@ const UpdatePatient = () => {
                                             </div>
                                             <div className="col-sm-9">
                                                
-                                                <input type="text" className='form-control form-control-sm' name='connumber' value={userData.connumber} onChange={handleChange} />
+                                                <input type="text" className='form-control form-control-sm' name='connumber' value={connumber} onChange={(e) => {
+                                                    setConnumber(e.target.value);
+                                                }} />
                                             </div>
                                         </div>
                                         <hr />
@@ -172,7 +224,10 @@ const UpdatePatient = () => {
                                             </div>
                                             <div className="col-sm-9">
                                                 
-                                                <input type="text" className='form-control form-control-sm' name='notes' value={userData.notes} onChange={handleChange} />
+                                                <input type="text" className='form-control form-control-sm' name='notes' value={notes} onChange={(e) => {
+                                                    setNotes(e.target.value);
+                                                }} />
+
                                             </div>
                                         </div>
                                         <hr />
@@ -182,7 +237,10 @@ const UpdatePatient = () => {
                                             </div>
                                             <div className="col-sm-9">
                                                 
-                                                <input type="text" className='form-control form-control-sm' name='address' value={userData.address} onChange={handleChange} />
+                                                <input type="text" className='form-control form-control-sm' name='address' value={address} onChange={(e) => {
+                                                    setAddress(e.target.value);
+                                                }} />
+
                                             </div>
 
                                         </div>

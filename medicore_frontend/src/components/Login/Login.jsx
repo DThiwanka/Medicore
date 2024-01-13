@@ -33,7 +33,7 @@ function Login() {
                     
 
                     history({ state: { id: email } });
-                    window.location.href = "/user/profile";
+                    window.location.href = `/user/profile/${email}`;
 
                 } else {
                     setFormError('Invalid Credentials.');

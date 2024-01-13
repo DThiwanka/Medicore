@@ -70,8 +70,8 @@ function App() {
 
           <Route path="/User" element={<PatientHomePage />} />
           <Route path="/user/appointments" exact element={<Appointment />} />
-          <Route path="/user/profile" element={<Patient />} />
-          <Route path="/user/profile/update" element={<UpdatePatient />} />
+          <Route path="/user/profile/:id" element={<Patient />} />
+          <Route path="/user/profile/update/:id" element={<UpdatePatient />} />
           <Route path='/user/updateappointment/' element={<UpdateAppointment />} />
 
           <Route path="/user/newgetall/" element={<NewGetAll />} />

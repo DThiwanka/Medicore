@@ -88,7 +88,7 @@ function AllAppointments() {
                                 <td><button className='btn btn-warning btn-block'>Pending</button></td>
                                 <td>
                                     <Link
-                                        to={`/user/updateappointment/`}
+                                        to={`/user/updateappointment/${appointment._id}`}
                                     >
                                         <button className='btn btn-success btn-block' >UPDATE</button>
                                     </Link>
