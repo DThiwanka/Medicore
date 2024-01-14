@@ -1,6 +1,7 @@
 const router = require("express").Router();
 
 let Appointment = require('../models/Appointment');
+const Patient = require("../models/Patients");
 
 router.route('/add').post((req, res) => {
 
@@ -98,6 +99,23 @@ router.route('/get/:id').get(async (req, res) => {
 
 })
 
+router.route('/all').get(async (req, res) => {
+    try {
+        // Find all users with appointments
+        const usersWithAppointments = await Patient.find({ appointments: { $exists: true, $not: { $size: 0 } } });
 
+        // Extract all appointments from users
+        const allAppointments = usersWithAppointments.reduce((appointments, user) => {
+            appointments.push(...user.appointments);
+            return appointments;
+        }, []);
+
+        // Send the appointments as JSON response
+        res.json(allAppointments);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
 
 module.exports = router;

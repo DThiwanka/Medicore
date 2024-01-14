@@ -32,6 +32,8 @@ import UpdatePatient from './components/Patients/Patient/UpdatePatient';
 import DnavBar from './components/Doctor/DoctorNavigationBar/DnavBar';
 import NewGetAll from './components/Patients/Patient/NewGetAll';
 import UpdateAppointment from './components/Patients/Appointment/UpdateAppointment';
+import GetAllAppointments from './components/Admins/GetAllAppointments/GetAllAppointments';
+
 
 
 //Doctor
@@ -65,6 +67,7 @@ function App() {
           <Route path="/admin/" element={<AdminHomePage />} />
           <Route path="/admin/viewpatients/" element={<Getallpatients />} />
           <Route path="/admin/viewadmins/" element={<Getalladmins />} />
+          <Route path="/admin/viewappointments/" element={<GetAllAppointments />} />
 
           
 

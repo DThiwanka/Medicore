@@ -327,9 +327,9 @@ router.route('/appointments/:patientId/:appointmentId').put(async (req, res) => 
 
     const patient = await Patient.findById(patientId);
 
-    const appointmentIndex = patient.appointments.findIndex(
-        (appointment) => appointment._id.toString() === appointmentId
-    );
+    // const appointmentIndex = patient.appointments.findIndex(
+    //     (appointment) => appointment._id.toString() === appointmentId
+    // );
 
     const updateAppointment = {
         name,
@@ -343,10 +343,13 @@ router.route('/appointments/:patientId/:appointmentId').put(async (req, res) => 
     };
 
     try {
-        const update = await Patient.findByIdAndUpdate(appointmentId, updateAppointment).then(() => {
+        const update = await Patient.findOneAndUpdate(
+            { _id: patientId, 'appointments._id': appointmentId },
+            { $set: { 'appointments.$': updateAppointment } },
+            { new: true }
+        ).then(() => {
             res.status(200).send({ status: "Appointment Updated!", updateAppointment })
             console.log("saved",updateAppointment);
-            // updateAppointment.save();
         });
 
         ////res.json(updateedPatient)
