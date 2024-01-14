@@ -17,11 +17,13 @@ function Patient() {
     //         // console.log(currentUserData)
     //     }
     // }, []);
-    const { id } = useParams();
+    //const { id } = useParams();
+    const currentUserData = localStorage.getItem('currentUser');
+    const userID = JSON.parse(currentUserData)._id;
 
-    const fetchData = async (userId) => {
+    const fetchData = async () => {
         try {
-            const response = await axios.get(`http://localhost:8070/patient/get/${userId}`);
+            const response = await axios.get(`http://localhost:8070/patient/get/${userID}`);
             setUserData(response.data.patient);
             console.log(response)
         } catch (error) {

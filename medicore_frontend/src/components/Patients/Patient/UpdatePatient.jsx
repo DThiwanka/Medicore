@@ -6,14 +6,6 @@ import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import Patient from './Patient';
 
 const UpdatePatient = () => {
-    // const [userData, setUserData] = useState({
-    //     id: localStorage.getItem('currentUser') ? JSON.parse(localStorage.getItem('currentUser'))._id: '',
-    //     name: '',
-    //     email: '',
-    //     connumber: '',
-    //     notes: '',
-    //     address: '',
-    // });
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -24,22 +16,6 @@ const UpdatePatient = () => {
     const navigate = useNavigate();
 
     const { id } = useParams();
-
-    
-    // useEffect(() => {
-    //     const fetchUser = async () => {
-    //         try {
-    //             const response = await axios.get(`http://localhost:8070/patient/get/${userData.id}`);
-    //             console.log(response.data);
-    //             setUserData(response.data);
-    //         } catch (error) {
-    //             console.log(error);
-    //         }
-    //     };
-    //     fetchUser();
-    // },
-    //     //[Patient.id]
-    // );
     
     useEffect(() => {
         axios.get(`http://localhost:8070/patient/get/${id}`).then((res) => {

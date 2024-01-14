@@ -319,7 +319,41 @@ router.delete('/appointments/:patientId/:appointmentId', async (req, res) => {
 });
 
 
-///
+///Update Appointment
+router.route('/appointments/:patientId/:appointmentId').put(async (req, res) => {
+    const { patientId, appointmentId } = req.params;
+    
+    const { name, date, time, reason, info, doctor, insurance, notes } = req.body;
+
+    const patient = await Patient.findById(patientId);
+
+    const appointmentIndex = patient.appointments.findIndex(
+        (appointment) => appointment._id.toString() === appointmentId
+    );
+
+    const updateAppointment = {
+        name,
+        date,
+        time,
+        reason,
+        info,
+        doctor,
+        insurance,
+        notes
+    };
+
+    try {
+        const update = await Patient.findByIdAndUpdate(appointmentId, updateAppointment).then(() => {
+            res.status(200).send({ status: "Appointment Updated!", updateAppointment })
+            console.log("saved",updateAppointment);
+            // updateAppointment.save();
+        });
+
+        ////res.json(updateedPatient)
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+})
 ////////////////////////////////////////////////////////////////////////
 
 module.exports = router;

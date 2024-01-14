@@ -72,7 +72,7 @@ function App() {
           <Route path="/user/appointments" exact element={<Appointment />} />
           <Route path="/user/profile/:id" element={<Patient />} />
           <Route path="/user/profile/update/:id" element={<UpdatePatient />} />
-          <Route path='/user/updateappointment/' element={<UpdateAppointment />} />
+          <Route path='/user/updateappointment/:id' element={<UpdateAppointment />} />
 
           <Route path="/user/newgetall/" element={<NewGetAll />} />
 
