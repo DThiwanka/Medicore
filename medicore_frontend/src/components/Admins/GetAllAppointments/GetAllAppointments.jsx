@@ -47,7 +47,7 @@ function GetAllAppointments() {
           <br />
           <br /><br />
           <center>
-              <h1 className='mb-5'>Patient Details</h1>
+              <h1 className='mb-5'>Appointment Details</h1>
           </center>
           <br />
           <div className="mb-3">

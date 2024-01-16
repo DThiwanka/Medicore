@@ -59,16 +59,20 @@ function AllAppointments() {
 
     return (
         <>
+            <hr/>
+            <h3 className='text-center mt-3'>Booked Appointments</h3>
             <Container>
                 <table className="table table-bordered table-hover mt-4">
                     <thead>
                         <tr>
                             <th scope="col">Id</th>
-                            <th scope="col">Order Id</th>
+                            <th scope="col">Name</th>
                             <th scope="col">Date</th>
                             <th scope="col">Time</th>
                             <th scope="col">Reason</th>
+                            <th scope="col">Info</th>
                             <th scope="col">Doctor</th>
+                            <th scope="col">Insurance</th>
                             <th scope="col">Notes</th>
                             <th scope="col">Status</th>
                             <th scope="col" colSpan={2} style={{ textAlign: "center" }}>Action</th>
@@ -79,11 +83,13 @@ function AllAppointments() {
                         {userData?.appointments?.map((appointment, index) => (
                             <tr key={index}>
                                 <td>{index + 1}</td>
-                                <td>{appointment._id}</td>
+                                <td>{appointment.name}</td>
                                 <td>{appointment.date}</td>
                                 <td>{appointment.time}</td>
                                 <td>{appointment.reason}</td>
+                                <td>{appointment.info}</td>
                                 <td>{appointment.doctor}</td>
+                                <td>{appointment.insurance}</td>
                                 <td>{appointment.notes}</td>
                                 <td><button className='btn btn-warning btn-block'>Pending</button></td>
                                 <td>

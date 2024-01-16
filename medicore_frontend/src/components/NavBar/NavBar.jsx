@@ -49,12 +49,10 @@ function NavBar() {
                     </Nav.Link>
                                 
                     <NavDropdown title={`Welcome, ${user.name}`} id="basic-nav-dropdown" align="end">
-                        <NavDropdown.Item>
-                            {/* <Link to={`/user/profile/${id}}`>
-                            Profile</Link> */}
-                            <Link
-                                to={`/user/profile/${id}`}
-                            >Profile</Link>
+                        <NavDropdown.Item >
+                            <Link to={`/user/profile/${id}`}>
+                                Profile
+                            </Link>
                         </NavDropdown.Item>
                         <NavDropdown.Item href="#logout" onClick={logout}>Logout</NavDropdown.Item>
                     </NavDropdown>
