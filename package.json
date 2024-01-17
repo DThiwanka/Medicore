@@ -1,7 +1,7 @@
 {
   "name": "medicore",
   "version": "1.0.0",
-  "description": "Medical Assurance System",
+  "description": "Medical Manin System",
   "main": "index.js",
   "scripts": {
     "StartBackend" : "cd medicore_backend && npm run dev",
