@@ -12,6 +12,11 @@ router.route('/add').post((req, res) => {
     const specialization = req.body.specialization;
     const assignedPatients = req.body.assignedPatients;
     const docNotes = req.body.docNotes;
+    const department = req.body.department;
+    const address = req.body.address;
+    const age = req.body.age;
+    const details = req.body.details;
+
 
     const newDoctor = new Doctor({
 
@@ -22,7 +27,11 @@ router.route('/add').post((req, res) => {
         gender,
         specialization,
         assignedPatients,
-        docNotes
+        docNotes,
+        department,
+        address,
+        age,
+        details
     })
 
     newDoctor.save().then(() => {
@@ -46,7 +55,7 @@ router.route('/').get((req, res) => {
 router.route('/update/:id').post(async (req, res) => {
     let docID = req.params.id;
 
-    const { doccode, name, email, password, gender, specialization, assignedPatients, docNotes } = req.body;
+    const { doccode, name, email, password, gender, specialization, assignedPatients, docNotes,department,address,age,details} = req.body;
 
     const updateDoctor = {
         doccode,
@@ -56,7 +65,11 @@ router.route('/update/:id').post(async (req, res) => {
         gender,
         specialization,
         assignedPatients,
-        docNotes
+        docNotes,
+        department,
+        address,
+        age,
+        details
     }
 
     const update = await Doctor.findByIdAndUpdate(docID, updateDoctor)
@@ -116,7 +129,12 @@ router.post("/login", async (req, res) => {
                 gender:doc.gender,
                 specialization:doc.specialization,
                 assignedPatients:doc.assignedPatients,
-                docNotes:doc.docNotes,
+                docNotes: doc.docNotes,
+                department: doc.department,
+                address: doc.address,
+                age: doc.age,
+                details: doc.details,
+                
 
             };
             res.send(response);

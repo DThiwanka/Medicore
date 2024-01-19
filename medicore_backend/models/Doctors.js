@@ -42,7 +42,47 @@ const DoctorSchema = new Schema({
     docNotes: {
         type: String,
         required:true
-    }
+    },
+
+    department: {
+        type: String,
+    },
+
+    address: {
+        type: String,
+        required: true
+    },
+
+    age: {
+        type: String,
+        required: true
+    },
+
+    details: {
+        type: [
+            {
+                degree: {
+                    type: String
+                },
+
+                awards: {
+                    type: String
+                },
+
+                History: {
+                    type: String
+                },
+
+                achivements: {
+                    type: String
+                },
+
+            }
+
+        ],
+    },
+
+
 
 })
 
