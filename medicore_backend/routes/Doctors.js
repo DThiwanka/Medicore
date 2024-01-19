@@ -85,14 +85,14 @@ router.route('/delete/:id').delete(async (req, res) => {
 router.route('/get/:id').get(async (req, res) => {
     let docID = req.params.id;
 
-    const pat = await Doctor.findById(patID)
+    const pat = await Doctor.findById(docID)
         // await Patient.findOne(email);
 
         .then((doctor) => {
-            res.status(200).send({ status: "User Fetched!", doctor })
+            res.status(200).send({ status: "Doctor Fetched!", doctor })
         }).catch(() => {
             console.log(err.message);
-            res.status(500).send({ status: "Error with get User!", error: err.message })
+            res.status(500).send({ status: "Error with get Doctor!", error: err.message })
         })
 
 })

@@ -2,7 +2,7 @@ import React from 'react'
 
 function DnavBar() {
   return (
-    <div>DnavBar</div>
+    <div>Doctor Login Area</div>
   )
 }
 

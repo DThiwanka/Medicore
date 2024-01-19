@@ -8,16 +8,7 @@ function Patient() {
     const [userData, setUserData] = useState(null);
 
     const user = useAuthentication();
-
-    // useEffect(() => {
-    //     const currentUserData = localStorage.getItem('currentUser');
-    //     if (currentUserData) {
-    //         const { _id } = JSON.parse(currentUserData);
-    //         fetchData(_id);
-    //         // console.log(currentUserData)
-    //     }
-    // }, []);
-    //const { id } = useParams();
+    
     const currentUserData = localStorage.getItem('currentUser');
     const userID = JSON.parse(currentUserData)._id;
 
@@ -61,12 +52,6 @@ function Patient() {
 
 
     };
-
-    // const userdetails = JSON.parse(localStorage.getItem('currentUser'));
-    // //const appointments = JSON.parse(localStorage.getItem('appointment'));
-
-    // console.log("userdetails :", userdetails);
-    // //console.log("Appointments :", appointments);
 
 
 
