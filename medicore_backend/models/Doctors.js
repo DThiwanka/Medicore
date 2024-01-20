@@ -8,30 +8,25 @@ const DoctorSchema = new Schema({
         type: String,
         required: true
     },
-
     name: {
         type: String,
         required: true
     },
-
     email: {
         type: String,
         required: true
     },
-
     password: {
         type: String,
         required: true
     },
-
     gender: {
         type: String,
         required: true
     },
-
     specialization: {
         type: String,
-        required:true
+        required: true
     },
 
     assignedPatients: {
@@ -46,7 +41,7 @@ const DoctorSchema = new Schema({
 
     docNotes: {
         type: String,
-        required:true
+        required: true
     },
 
     department: {
@@ -63,33 +58,87 @@ const DoctorSchema = new Schema({
         required: true
     },
 
-    details: {
-        type: [
-            {
-                degree: {
-                    type: String
-                },
-
-                awards: {
-                    type: String
-                },
-
-                History: {
-                    type: String
-                },
-
-                achivements: {
-                    type: String
-                },
-
-            }
-
-        ],
+    degree: {
+        type: String
     },
 
+    awards: {
+        type: String
+    },
 
+    history: {
+        type: String
+    },
 
-})
+    achievements: {
+        type: String
+    },
+
+    phoneNumber: {
+        type: String
+    },
+
+    schedule: {
+        type: String // You may want to use a more structured format for the schedule
+    },
+
+    medicalSchool: {
+        type: String
+    },
+
+    graduationYear: {
+        type: String
+    },
+
+    workExperience: {
+        type: String
+    },
+
+    licenseNumber: {
+        type: String
+    },
+
+    certifications: {
+        type: String
+    },
+
+    languagesSpoken: {
+        type: [String]
+    },
+
+    acceptedInsurances: {
+        type: [String]
+    },
+
+    researchInterests: {
+        type: String
+    },
+
+    publications: {
+        type: String
+    },
+
+    professionalMemberships: {
+        type: String
+    },
+
+    website: {
+        type: String
+    },
+
+    linkedInProfile: {
+        type: String
+    },
+
+    emergencyContact: {
+        type: String
+    },
+
+    hospitalAffiliation: {
+        type: String
+    }
+
+});
 
 const Doctor = mongoose.model("Doctor", DoctorSchema);
 

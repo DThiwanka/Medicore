@@ -27,7 +27,7 @@ function Login() {
             if (status === 200) {
                 localStorage.setItem("localData", JSON.stringify(data));
                 // history({ state: { id: _id } });
-                window.location.href = `/doctor/profile/${data._id}`;
+                window.location.href = `/doctor/enc/profile/${data._id}`;
             } else {
                 setFormError('Invalid Credentials.');
             }
@@ -40,7 +40,7 @@ function Login() {
     }
 
     return (
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: '#2c3e50' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
             <div style={{ maxWidth: '500px', width: '100%', padding: '50px', borderRadius: '10px', boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)', backgroundColor: '#fff', color: '#2c3e50' }}>
                 <h2 style={{ textAlign: 'center', color: '#3498db', fontSize: '30px', marginBottom: '40px' }}>Doctor Login</h2>
                 <form action='post'>

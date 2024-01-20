@@ -15,7 +15,27 @@ router.route('/add').post((req, res) => {
     const department = req.body.department;
     const address = req.body.address;
     const age = req.body.age;
-    const details = req.body.details;
+    const degree = req.body.degree;
+    const awards = req.body.awards;
+    const history = req.body.history;
+    const achievements = req.body.achievements;
+    const phoneNumber = req.body.phoneNumber;
+    const schedule = req.body.schedule;
+    const medicalSchool = req.body.medicalSchool;
+    const graduationYear = req.body.graduationYear;
+    const workExperience = req.body.workExperience;
+    const licenseNumber = req.body.licenseNumber;
+    const certifications = req.body.certifications;
+    const languagesSpoken = req.body.languagesSpoken;
+    const acceptedInsurances = req.body.acceptedInsurances;
+    const researchInterests = req.body.researchInterests;
+    const publications = req.body.publications;
+    const professionalMemberships = req.body.professionalMemberships;
+    const website = req.body.website;
+    const linkedInProfile = req.body.linkedInProfile;
+    const emergencyContact = req.body.emergencyContact;
+    const hospitalAffiliations = req.body.hospitalAffiliations;
+
 
 
     const newDoctor = new Doctor({
@@ -31,7 +51,27 @@ router.route('/add').post((req, res) => {
         department,
         address,
         age,
-        details
+        degree,
+        awards,
+        history,
+        achievements,
+        phoneNumber,
+        schedule,
+        medicalSchool,
+        graduationYear,
+        workExperience,
+        licenseNumber,
+        certifications,
+        languagesSpoken,
+        acceptedInsurances,
+        researchInterests,
+        publications,
+        professionalMemberships,
+        website,
+        linkedInProfile,
+        emergencyContact,
+        hospitalAffiliations
+
     })
 
     newDoctor.save().then(() => {
@@ -55,7 +95,37 @@ router.route('/').get((req, res) => {
 router.route('/update/:id').post(async (req, res) => {
     let docID = req.params.id;
 
-    const { doccode, name, email, password, gender, specialization, assignedPatients, docNotes,department,address,age,details} = req.body;
+    const { doccode,
+        name,
+        email,
+        password,
+        gender,
+        specialization,
+        assignedPatients,
+        docNotes,
+        department,
+        address,
+        age,
+        degree,
+        awards,
+        history,
+        achievements,
+        phoneNumber,
+        schedule,
+        medicalSchool,
+        graduationYear,
+        workExperience,
+        licenseNumber,
+        certifications,
+        languagesSpoken,
+        acceptedInsurances,
+        researchInterests,
+        publications,
+        professionalMemberships,
+        website,
+        linkedInProfile,
+        emergencyContact,
+        hospitalAffiliations } = req.body;
 
     const updateDoctor = {
         doccode,
@@ -69,7 +139,26 @@ router.route('/update/:id').post(async (req, res) => {
         department,
         address,
         age,
-        details
+        degree,
+        awards,
+        history,
+        achievements,
+        phoneNumber,
+        schedule,
+        medicalSchool,
+        graduationYear,
+        workExperience,
+        licenseNumber,
+        certifications,
+        languagesSpoken,
+        acceptedInsurances,
+        researchInterests,
+        publications,
+        professionalMemberships,
+        website,
+        linkedInProfile,
+        emergencyContact,
+        hospitalAffiliations
     }
 
     const update = await Doctor.findByIdAndUpdate(docID, updateDoctor)
@@ -122,13 +211,13 @@ router.post("/login", async (req, res) => {
             const response = {
 
                 _id: doc._id,
-                doccode:doc.doccode,
-                name:doc.name,
-                email:doc.email,
-                password:doc.password,
-                gender:doc.gender,
-                specialization:doc.specialization,
-                assignedPatients:doc.assignedPatients,
+                doccode: doc.doccode,
+                name: doc.name,
+                email: doc.email,
+                password: doc.password,
+                gender: doc.gender,
+                specialization: doc.specialization,
+                assignedPatients: doc.assignedPatients,
                 docNotes: doc.docNotes,
                 department: doc.department,
                 address: doc.address,

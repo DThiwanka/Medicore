@@ -52,7 +52,7 @@ function App() {
         {
           window.location.pathname.startsWith('/admin') ? <AdminNavBar />
             : window.location.pathname.startsWith('/user') ? <NavBar />
-              : window.location.pathname.startsWith('/doctor') ? <DnavBar/>
+              : window.location.pathname.startsWith('/doctor/enc/') ? <DnavBar/>
               : <Newnav/>
         }
 
@@ -83,8 +83,8 @@ function App() {
 
 
           <Route path="/doctor/login" element={<DLogin />} />
-          <Route path="/doctor/profile/:id" element={<Dprofile />} />
-          <Route path="/doctor/assigned" element={<DoctorPatients />} />
+          <Route path="/doctor/enc/profile/:id" element={<Dprofile />} />
+          <Route path="/doctor/enc/assigned" element={<DoctorPatients />} />
 
 
           
