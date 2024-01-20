@@ -22,75 +22,97 @@ function Profile() {
 
   return (
     <div>
-    
-      {/* Main Section */}
-      <section>
-        <div className="rt-container">
-          <div className="col-rt-12">
-            <div className="Scriptcontent">
-              {/* Student Profile */}
-              <div className="student-profile py-4">
-                <div className="container">
-                  <div className="row">
-                    <div className="col-lg-4">
-                      <div className="card shadow-sm">
-                        <div className="card-header bg-transparent text-center">
-                          <h3>{ doctorData.name}</h3>
-                        </div>
-                        <div className="card-body">
-                          <p className="mb-0">
-                            <strong className="pr-1">Student ID:</strong>321000001
-                          </p>
-                          <p className="mb-0">
-                            <strong className="pr-1">Class:</strong>4
-                          </p>
-                          <p className="mb-0">
-                            <strong className="pr-1">Section:</strong>A
-                          </p>
-                        </div>
-                      </div>
+      <div class="container">
+        <div class="row gutters">
+          <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+            <div class="card h-100">
+              <div class="card-body">
+                <div class="account-settings">
+                  <div class="user-profile text-center">
+                    <div class="user-avatar">
+                      <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Maxwell Admin" class="img-fluid rounded-circle" />
                     </div>
-                    <div className="col-lg-8">
-                      <div className="card shadow-sm">
-                        <div className="card-header bg-transparent border-0">
-                          <h3 className="mb-0">
-                            <i className="far fa-clone pr-1"></i>General Information
-                          </h3>
-                        </div>
-                        <div className="card-body pt-0">
-                          <table className="table table-bordered">
-                            <tbody>
-                              <tr>
-                                <th width="30%">Roll</th>
-                                <td width="2%">:</td>
-                                <td>125</td>
-                              </tr>
-                              <tr>
-                                <th width="30%">Academic Year</th>
-                                <td width="2%">:</td>
-                                <td>2020</td>
-                              </tr>
-                              <tr>
-                                <th width="30%">Gender</th>
-                                <td width="2%">:</td>
-                                <td>Male</td>
-                              </tr>
-                              <tr>
-                                <th width="30%">Religion</th>
-                                <td width="2%">:</td>
-                                <td>Group</td>
-                              </tr>
-                              <tr>
-                                <th width="30%">Blood</th>
-                                <td width="2%">:</td>
-                                <td>B+</td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                      <div style={{ height: '26px' }}></div>
-                      
+                    <h5 class="user-name">Yuki Hayashi</h5>
+                    <h6 class="user-email">yuki@Maxwell.com</h6>
+                  </div>
+                  <div class="about mt-4 text-center">
+                    <h5>About</h5>
+                    <p>I'm Yuki. Full Stack Designer. I enjoy creating user-centric, delightful, and human experiences.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xl-8 col-lg-9 col-md-12 col-sm-12 col-12">
+            <div class="card h-100">
+              <div class="card-body">
+                <div class="row gutters">
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <h6 class="mb-2 text-primary">Personal Details</h6>
+                  </div>
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                      <label for="fullName">Full Name</label>
+                      <input type="text" class="form-control" id="fullName" placeholder="Enter full name" />
+                    </div>
+                  </div>
+                  
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                      <label for="eMail">Email</label>
+                      <input type="email" class="form-control" id="eMail" placeholder="Enter email ID" />
+                    </div>
+                  </div>
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                      <label for="phone">Phone</label>
+                      <input type="text" class="form-control" id="phone" placeholder="Enter phone number" />
+                    </div>
+                  </div>
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                      <label for="website">Website URL</label>
+                      <input type="url" class="form-control" id="website" placeholder="Website url" />
+                    </div>
+                  </div>
+                </div>
+                <div class="row gutters">
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <h6 class="mt-3 mb-2 text-primary">Address</h6>
+                  </div>
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                      <label for="Street">Street</label>
+                      <input type="name" class="form-control" id="Street" placeholder="Enter Street" />
+                    </div>
+                  </div>
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                      <label for="ciTy">City</label>
+                      <input type="name" class="form-control" id="ciTy" placeholder="Enter City" />
+                    </div>
+                  </div>
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                      <label for="sTate">State</label>
+                      <input type="text" class="form-control" id="sTate" placeholder="Enter State" />
+                    </div>
+                  </div>
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                      <label for="zIp">Zip Code</label>
+                      <input type="text" class="form-control" id="zIp" placeholder="Zip Code" />
+                    </div>
+                  </div>
+                </div>
+                </div>
+
+                <div class="row gutters">
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="text-right">
+                      <button type="button" id="submit" name="submit" class="btn btn-secondary">Cancel</button>
+                      <button type="button" id="submit" name="submit" class="btn btn-primary">Update</button>
                     </div>
                   </div>
                 </div>
@@ -98,11 +120,11 @@ function Profile() {
             </div>
           </div>
         </div>
-      </section>
+      </div>
+   
 
-      {/* Analytics */}
+   
 
-    </div>
   );
 }
 

@@ -104,8 +104,8 @@ router.route('/get/:id').get(async (req, res) => {
         .then((doctor) => {
             res.status(200).send({ status: "Doctor Fetched!", doctor })
         }).catch(() => {
-            console.log(err.message);
-            res.status(500).send({ status: "Error with get Doctor!", error: err.message })
+            console.log(err);
+            res.status(500).send({ status: "Error with get Doctor!", err })
         })
 
 })
@@ -134,7 +134,7 @@ router.post("/login", async (req, res) => {
                 address: doc.address,
                 age: doc.age,
                 details: doc.details,
-                
+
 
             };
             res.send(response);

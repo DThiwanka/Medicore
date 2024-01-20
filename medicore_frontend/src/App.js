@@ -36,6 +36,7 @@ import GetAllAppointments from './components/Admins/GetAllAppointments/GetAllApp
 import PaAppointment from './components/Admins/Views/PaAppointment';
 import DLogin from './components/Doctor/Login';
 import Dprofile from './components/Doctor/Profile/Profile';
+import DoctorPatients from './components/Doctor/Dpatients/DoctorPatients';
 
 //Doctor
 
@@ -83,6 +84,8 @@ function App() {
 
           <Route path="/doctor/login" element={<DLogin />} />
           <Route path="/doctor/profile/:id" element={<Dprofile />} />
+          <Route path="/doctor/assigned" element={<DoctorPatients />} />
+
 
           
         </Routes>

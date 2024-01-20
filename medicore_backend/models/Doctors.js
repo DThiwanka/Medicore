@@ -35,8 +35,13 @@ const DoctorSchema = new Schema({
     },
 
     assignedPatients: {
-        type: Array,
-        default:[],
+        type: [
+            {
+                patientID: {
+                    type: String
+                },
+            }
+        ],
     },
 
     docNotes: {
