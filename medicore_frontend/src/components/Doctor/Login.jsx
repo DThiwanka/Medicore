@@ -27,7 +27,7 @@ function Login() {
             if (status === 200) {
                 localStorage.setItem("localData", JSON.stringify(data));
                 // history({ state: { id: _id } });
-                window.location.href = `/doctor/enc/profile/${data._id}`;
+                window.location.href = `/doctor/enc/profile/`;
             } else {
                 setFormError('Invalid Credentials.');
             }

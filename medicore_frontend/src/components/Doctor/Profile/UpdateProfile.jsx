@@ -1,0 +1,32 @@
+import React from 'react'
+
+function UpdateProfile() {
+
+
+    const [doctorData, setDoctorData] = useState('');
+
+    const currentUserData = localStorage.getItem('localData');
+    const currentUser = JSON.parse(currentUserData);
+
+    useEffect(() => {
+        fetchData(id);
+    }, [id]);
+
+    const fetchData = async (id) => {
+        try {
+            const response = await axios.get(`http://localhost:8070/doctor/get/${id}`);
+            setDoctorData(response.data.doctor);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
+    
+
+  return (
+      <div>
+          <h2>{ currentUser.address}</h2>
+    </div>
+  )
+}
+
+export default UpdateProfile

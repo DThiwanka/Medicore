@@ -4,27 +4,30 @@ const Schema = mongoose.Schema;
 
 const DoctorSchema = new Schema({
 
-    doccode: {
+    doccode: { //////////////////////
         type: String,
         required: true
     },
-    name: {
+    name: { /////////////////////////////
+        type: String,
+        required: true
+    }, 
+
+    email: { ///////////////////////////////
         type: String,
         required: true
     },
-    email: {
-        type: String,
-        required: true
-    },
+
     password: {
         type: String,
         required: true
     },
-    gender: {
+
+    gender: { ///////////////////////
         type: String,
         required: true
     },
-    specialization: {
+    specialization: { ///////////////////////////
         type: String,
         required: true
     },
@@ -39,104 +42,93 @@ const DoctorSchema = new Schema({
         ],
     },
 
-    docNotes: {
+    docNotes: { //////////////////////////////
         type: String,
         required: true
     },
 
-    department: {
+    department: { ///////////////////////////////
         type: String,
     },
 
-    address: {
-        type: String,
-        required: true
-    },
-
-    age: {
+    address: { /////////////////
         type: String,
         required: true
     },
 
-    degree: {
+    age: {/////////////
+        type: String,
+        required: true
+    },
+
+    degree: { ///////////////////////
         type: String
     },
 
-    awards: {
+    awards: { ////////////////////////////
         type: String
     },
 
-    history: {
+    history: { /////////////////////
         type: String
     },
 
-    achievements: {
+    achievements: { //////////////////////////////
         type: String
     },
 
-    phoneNumber: {
+    phoneNumber: { ////////////////////////
         type: String
     },
 
-    schedule: {
+    schedule: { ///////////////////////////////
         type: String // You may want to use a more structured format for the schedule
+    },
+
+    workExperience: { /////////////////////////////////////
+        type: String
+    },
+
+    licenseNumber: { /////////////////////////////////
+        type: String
+    },
+
+    certifications: { ////////////////////////
+        type: String
+    },
+
+    languagesSpoken: { /////////////////////////////////
+        type: [String]
+    },
+
+    acceptedInsurances: { ///////////////////////////////
+        type: [String]
+    },
+
+    professionalMemberships: { /////////////////////////
+        type: String
+    },
+
+    website: { ////////////////////////////
+        type: String
+    },
+
+    linkedInProfile: { /////////////////////////
+        type: String
+    },
+
+    emergencyContact: { ///////////////////////////////
+        type: String
     },
 
     medicalSchool: {
         type: String
     },
 
-    graduationYear: {
+    graduationYear: { ////////////////////////////////
         type: String
     },
 
-    workExperience: {
-        type: String
-    },
-
-    licenseNumber: {
-        type: String
-    },
-
-    certifications: {
-        type: String
-    },
-
-    languagesSpoken: {
-        type: [String]
-    },
-
-    acceptedInsurances: {
-        type: [String]
-    },
-
-    researchInterests: {
-        type: String
-    },
-
-    publications: {
-        type: String
-    },
-
-    professionalMemberships: {
-        type: String
-    },
-
-    website: {
-        type: String
-    },
-
-    linkedInProfile: {
-        type: String
-    },
-
-    emergencyContact: {
-        type: String
-    },
-
-    hospitalAffiliation: {
-        type: String
-    }
 
 });
 

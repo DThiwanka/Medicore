@@ -37,6 +37,7 @@ import PaAppointment from './components/Admins/Views/PaAppointment';
 import DLogin from './components/Doctor/Login';
 import Dprofile from './components/Doctor/Profile/Profile';
 import DoctorPatients from './components/Doctor/Dpatients/DoctorPatients';
+import DocUpdate from './components/Doctor/Profile/UpdateProfile';
 
 //Doctor
 
@@ -83,8 +84,9 @@ function App() {
 
 
           <Route path="/doctor/login" element={<DLogin />} />
-          <Route path="/doctor/enc/profile/:id" element={<Dprofile />} />
+          <Route path="/doctor/enc/profile" element={<Dprofile />} />
           <Route path="/doctor/enc/assigned" element={<DoctorPatients />} />
+          <Route path="/doctor/enc/profile/update" element={<DocUpdate />} />
 
 
           
