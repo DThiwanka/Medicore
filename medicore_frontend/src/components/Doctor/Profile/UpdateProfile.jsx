@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios';
 
 function UpdateProfile() {
 
@@ -6,6 +7,9 @@ function UpdateProfile() {
     const [doctorData, setDoctorData] = useState('');
 
     const currentUserData = localStorage.getItem('localData');
+    
+    
+    const id = JSON.parse(currentUserData).id;
     const currentUser = JSON.parse(currentUserData);
 
     useEffect(() => {

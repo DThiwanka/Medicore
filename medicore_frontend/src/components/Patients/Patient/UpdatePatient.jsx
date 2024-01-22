@@ -12,7 +12,7 @@ const UpdatePatient = () => {
     const [connumber, setConnumber] = useState('');
     const [notes, setNotes] = useState('');
     const [address, setAddress] = useState('');
-
+ 
     const navigate = useNavigate();
 
     const { id } = useParams();
