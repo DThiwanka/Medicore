@@ -192,7 +192,7 @@ router.route('/get/:id').get(async (req, res) => {
 
         .then((doctor) => {
             res.status(200).send({ status: "Doctor Fetched!", doctor })
-        }).catch(() => {
+        }).catch((err) => {
             console.log(err);
             res.status(500).send({ status: "Error with get Doctor!", err })
         })

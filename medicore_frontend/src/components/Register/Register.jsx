@@ -67,57 +67,57 @@ function Register() {
 
     return (
         <div>
-            <section className="h-90 mt-5 mb-5">
-                <div className="mask d-flex align-items-center h-90">
-                    <div className="container h-90">
-                        <div className="row d-flex justify-content-center align-items-center h-100">
-                            <div className="col-12">
-                                <div className="card bg-light" style={{ borderRadius: "15px" }}>
-                                    <div className="card-body p-5">
-                                        <h2 className="text-uppercase text-center mb-5">Create an account</h2>
+            <section classNameName="h-90 mt-5 mb-5">
+                <div classNameName="mask d-flex align-items-center h-90">
+                    <div classNameName="container h-90">
+                        <div classNameName="row d-flex justify-content-center align-items-center h-100">
+                            <div classNameName="col-12">
+                                <div classNameName="card bg-light" style={{ borderRadius: "15px" }}>
+                                    <div classNameName="card-body p-5">
+                                        <h2 classNameName="text-uppercase text-center mb-5">Create an account</h2>
 
                                         <form id="pat" onSubmit={sendData}>
-                                            <div className="row">
-                                                <div className="col-lg-6">
-                                                    <div className="form-outline mb-2">
-                                                        <label className="form-label" htmlFor="name">Full Name</label>
-                                                        <input type="text" required id="name" className="form-control form-control-lg"
+                                            <div classNameName="row">
+                                                <div classNameName="col-lg-6">
+                                                    <div classNameName="form-outline mb-2">
+                                                        <label classNameName="form-label" htmlFor="name">Full Name</label>
+                                                        <input type="text" required id="name" classNameName="form-control form-control-lg"
                                                         onChange={(e) => {
                                                             setname(e.target.value);
                                                         }}
                                                         />
                                                     </div>
                                                     
-                                                    <div className="form-outline mb-2">
-                                                        <label className="form-label" htmlFor="email">Your Email</label>
-                                                        <input type="email" required id="text" className="form-control form-control-lg"
+                                                    <div classNameName="form-outline mb-2">
+                                                        <label classNameName="form-label" htmlFor="email">Your Email</label>
+                                                        <input type="email" required id="text" classNameName="form-control form-control-lg"
                                                         onChange={(e) => {
                                                             setemail(e.target.value);
                                                         }}
                                                         />
                                                     </div>
 
-                                                    <div className="form-outline mb-2">
-                                                        <label className="form-label" htmlFor="contactnum">Contact Number</label>
-                                                        <input type="connumber" required id="connumber" className="form-control form-control-lg"
+                                                    <div classNameName="form-outline mb-2">
+                                                        <label classNameName="form-label" htmlFor="contactnum">Contact Number</label>
+                                                        <input type="connumber" required id="connumber" classNameName="form-control form-control-lg"
                                                             onChange={(e) => {
                                                                 setconnumber(e.target.value);
                                                             }}
                                                         />
                                                     </div>
 
-                                                    <div className="form-outline mb-2">
-                                                        <label className="form-label" htmlFor="password">Password</label>
-                                                        <input type="password" required id="password" className="form-control form-control-lg"
+                                                    <div classNameName="form-outline mb-2">
+                                                        <label classNameName="form-label" htmlFor="password">Password</label>
+                                                        <input type="password" required id="password" classNameName="form-control form-control-lg"
                                                         onChange={(e) => {
                                                             setpassword(e.target.value);
                                                         }}
                                                         />
                                                     </div>
 
-                                                    <div className="form-outline mb-2">
-                                                        <label className="form-label" htmlFor="reppassword">Repeat your password</label>
-                                                        <input type="text" required id="reppassword" className="form-control form-control-lg"
+                                                    <div classNameName="form-outline mb-2">
+                                                        <label classNameName="form-label" htmlFor="reppassword">Repeat your password</label>
+                                                        <input type="text" required id="reppassword" classNameName="form-control form-control-lg"
                                                         onChange={(e) => {
                                                             setreppassword(e.target.value);
                                                         }}
@@ -125,11 +125,11 @@ function Register() {
                                                     </div>
                                                 </div>
 
-                                                <div className="col-lg-6">
+                                                <div classNameName="col-lg-6">
                                                     
-                                                    <div className="form-outline mb-2">
-                                                    <label className="form-label" htmlFor="gender">Gender</label>
-                                                    <select required id="gender" className="form-control form-control-lg"
+                                                    <div classNameName="form-outline mb-2">
+                                                    <label classNameName="form-label" htmlFor="gender">Gender</label>
+                                                    <select required id="gender" classNameName="form-control form-control-lg"
                                                         onChange={(e) => {
                                                             setgender(e.target.value);
                                                         }}
@@ -141,9 +141,9 @@ function Register() {
                                                     </select>
                                                 </div>
                                                 
-                                                    <div className="form-outline mb-2">
-                                                    <label className="form-label" htmlFor="bloodGroup">Blood Group</label>
-                                                    <select required id="bloodGroup" className="form-control form-control-lg"
+                                                    <div classNameName="form-outline mb-2">
+                                                    <label classNameName="form-label" htmlFor="bloodGroup">Blood Group</label>
+                                                    <select required id="bloodGroup" classNameName="form-control form-control-lg"
                                                         onChange={(e) => {
                                                             setbloodGroup(e.target.value);
                                                         }}
@@ -162,9 +162,9 @@ function Register() {
                                                     </div>
                                                     
 
-                                                    <div className="form-outline mb-2">
-                                                        <label className="form-label" htmlFor="age">Age</label>
-                                                        <input type="number" required id="age" className="form-control form-control-lg"
+                                                    <div classNameName="form-outline mb-2">
+                                                        <label classNameName="form-label" htmlFor="age">Age</label>
+                                                        <input type="number" required id="age" classNameName="form-control form-control-lg"
                                                             onChange={(e) => {
                                                                 setage(e.target.value);
                                                             }}
@@ -172,18 +172,18 @@ function Register() {
                                                     </div>
 
 
-                                                    <div className="form-outline mb-2">
-                                                        <label className="form-label" htmlFor="address">Address</label>
-                                                        <input type="text" required id="address" className="form-control form-control-lg"
+                                                    <div classNameName="form-outline mb-2">
+                                                        <label classNameName="form-label" htmlFor="address">Address</label>
+                                                        <input type="text" required id="address" classNameName="form-control form-control-lg"
                                                         onChange={(e) => {
                                                             setaddress(e.target.value);
                                                         }}
                                                         />
                                                     </div>
 
-                                                    <div className="form-outline mb-2">
-                                                        <label className="form-label" htmlFor="notes">Notes</label>
-                                                        <input type="text" id="notes" className="form-control form-control-lg"
+                                                    <div classNameName="form-outline mb-2">
+                                                        <label classNameName="form-label" htmlFor="notes">Notes</label>
+                                                        <input type="text" id="notes" classNameName="form-control form-control-lg"
                                                         onChange={(e) => {
                                                             setnotes(e.target.value);
                                                         }}
@@ -193,24 +193,24 @@ function Register() {
                                             </div>
 
                                            
-                                            <div className="form-check d-flex mt-3"  style={{fontSize:"35px"}}>
-                                                <input className="form-check-input" type="checkbox" value="" id="form2Example3cg" style={{transform: "scale(1.5)"}} required/>
-                                                <label className="form-check-label" htmlFor="form2Example3g"  style={{fontSize:"15px",marginLeft:"5px"}}>
+                                            <div classNameName="form-check d-flex mt-3"  style={{fontSize:"35px"}}>
+                                                <input classNameName="form-check-input" type="checkbox" value="" id="form2Example3cg" style={{transform: "scale(1.5)"}} required/>
+                                                <label classNameName="form-check-label" htmlFor="form2Example3g"  style={{fontSize:"15px",marginLeft:"5px"}}>
                                                     I agree to all statements in <u data-toggle="modal" data-target="#termsandconditions" style={{color:"blue"}} >Terms of service</u>
                                                 </label>
                                             </div>
 
                                             {/* model open*/}
-                                            <div class="modal fade xl" id="termsandconditions" tabindex="1" role="dialog" aria-labelledby="termsandconditionsLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-lg" role="document">
-                                                <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title"  id="termsandconditionsLabel">Terms and Conditions</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <div className="modal fade xl" id="termsandconditions" tabindex="1" role="dialog" aria-labelledby="termsandconditionsLabel" aria-hidden="true">
+                                            <div className="modal-dialog modal-lg" role="document">
+                                                <div className="modal-content">
+                                                <div className="modal-header">
+                                                    <h5 className="modal-title"  id="termsandconditionsLabel">Terms and Conditions</h5>
+                                                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
-                                                <div class="modal-body">
+                                                <div className="modal-body">
     
                                                 <ol>
                                                     <li>
@@ -250,7 +250,7 @@ function Register() {
                                                     
                                                 </ol>
                                                 </div>
-                                                <div class="modal-footer">
+                                                <div className="modal-footer">
                                                     By checking the box and proceeding with registration, you acknowledge that you have read, understood, and agree to abide by these terms and conditions.
                                                     
                                                 </div>
@@ -261,11 +261,11 @@ function Register() {
                                             
 
                                             <center>
-                                            <div className="d-grid gap-2 xl">
-                                                <Button type="submit" className="btn btn-success btn-xl center mb-4">Register</Button>
+                                            <div classNameName="d-grid gap-2 xl">
+                                                <Button type="submit" classNameName="btn btn-success btn-xl center mb-4">Register</Button>
                                             </div>
 
-                                                Already have an account? <a href="/login " className="fw-bold text-body"><u>Login here</u></a>
+                                                Already have an account? <a href="/login " classNameName="fw-bold text-body"><u>Login here</u></a>
                                                 </center>
                                         </form>
                                         

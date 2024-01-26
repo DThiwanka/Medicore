@@ -13,6 +13,11 @@ function NewNav() {
         textDecoration: 'none', // Optionally remove underline
     };
 
+    // const currentUserData = localStorage.getItem('localData');
+    // const id = JSON.parse(currentUserData).id;
+    // const currentUser = JSON.parse(currentUserData);
+    // console.log(id);
+
     return (
         <nav className="navbar navbar-expand-lg p-3 shadow-sm ml-auto" expand="lg" bg="white" sticky="top" style={containerStyles}>
             <div className="container">
