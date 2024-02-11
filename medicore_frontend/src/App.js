@@ -38,6 +38,8 @@ import DLogin from './components/Doctor/Login';
 import Dprofile from './components/Doctor/Profile/Profile';
 import DoctorPatients from './components/Doctor/Dpatients/DoctorPatients';
 import DocUpdate from './components/Doctor/Profile/UpdateProfile';
+import GetAllDoctors from './components/Admins/GetAllDoctors/GetAllDoctors';
+
 
 //Doctor
 
@@ -48,19 +50,19 @@ function App() {
   return (
     <div className="app">
       <BrowserRouter>
-        
+
 
         {
           window.location.pathname.startsWith('/admin') ? <AdminNavBar />
             : window.location.pathname.startsWith('/user') ? <NavBar />
-              : window.location.pathname.startsWith('/doctor/enc/') ? <DnavBar/>
-              : <Newnav/>
+              : window.location.pathname.startsWith('/doctor/enc/') ? <DnavBar />
+                : <Newnav />
         }
 
 
         <Routes>
-          
-          <Route path='/unauthorized' exact element={<Unauth/>}/> 
+
+          <Route path='/unauthorized' exact element={<Unauth />} />
           <Route path="/" exact element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
@@ -70,10 +72,12 @@ function App() {
           <Route path="/admin/" element={<AdminHomePage />} />
           <Route path="/admin/viewpatients/" element={<Getallpatients />} />
           <Route path="/admin/viewadmins/" element={<Getalladmins />} />
+          <Route path="/admin/viewdoctors/" element={<GetAllDoctors />} />
           <Route path="/admin/viewappointments/" element={<GetAllAppointments />} />
           <Route path="/admin/view/appointment/:id" element={<PaAppointment />} />
 
-          
+
+
 
           <Route path="/User" element={<PatientHomePage />} />
           <Route path="/user/appointments" exact element={<Appointment />} />
@@ -89,7 +93,7 @@ function App() {
           <Route path="/doctor/enc/profile/update" element={<DocUpdate />} />
 
 
-          
+
         </Routes>
       </BrowserRouter>
     </div>
