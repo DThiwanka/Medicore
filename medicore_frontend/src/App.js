@@ -39,6 +39,7 @@ import Dprofile from './components/Doctor/Profile/Profile';
 import DoctorPatients from './components/Doctor/Dpatients/DoctorPatients';
 import DocUpdate from './components/Doctor/Profile/UpdateProfile';
 import GetAllDoctors from './components/Admins/GetAllDoctors/GetAllDoctors';
+import ViewDoctors from './components/Patients/ViewDoctors/ViewDoctors';
 
 
 //Doctor
@@ -85,6 +86,7 @@ function App() {
           <Route path="/user/profile/update/:id" element={<UpdatePatient />} />
           <Route path='/user/updateappointment/:id' element={<UpdateAppointment />} />
           <Route path="/user/newgetall/" element={<NewGetAll />} />
+          <Route path="/user/doctors/" element={<ViewDoctors />} />
 
 
           <Route path="/doctor/login" element={<DLogin />} />
