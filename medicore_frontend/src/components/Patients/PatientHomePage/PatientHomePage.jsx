@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 function PatientHomePage() {
 
@@ -14,6 +15,9 @@ function PatientHomePage() {
         borderRadius: '15px', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', transitionDuration: '0.3s', background: 'linear-gradient(to bottom, lightblue, white)'
     }
     
+    function NavDoc() {
+     window.location.href = "/user/doctors";
+    }
 
     return (
         <Container className="py-4">
@@ -36,7 +40,7 @@ function PatientHomePage() {
                         <Card.Body>
                             <Card.Title style={{ fontSize: '24px', fontWeight: 'bold' }}>View Doctors</Card.Title>
                             <Card.Text style={{ fontSize: '18px' }}>Explore our skilled doctors and their profiles.</Card.Text>
-                            <Button variant="primary" href="#view-doctors" style={buttonStyle}>Explore</Button>
+                            <Button variant="primary" onClick={NavDoc} style={buttonStyle}>Explore</Button>
                         </Card.Body>
                     </Card>
                 </Col>

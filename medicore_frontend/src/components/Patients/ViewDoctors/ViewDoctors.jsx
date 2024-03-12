@@ -9,6 +9,7 @@ function ViewDoctors() {
             .then(data => {
                 setDoctors(data);
                 console.log(data);
+                console.table(data);
             })
             .catch(error => {
                 console.error('Error fetching data:', error);
@@ -18,7 +19,7 @@ function ViewDoctors() {
     return (
         <div className="container mt-4">
             <center>
-            <h1 className="mb-4">Doctors</h1>
+            <h1 className="mb-4">Avilable Doctors</h1>
             </center>
             <table className="table table-bordered">
                 <thead className="thead-dark">
