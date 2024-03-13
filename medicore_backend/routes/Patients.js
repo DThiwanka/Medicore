@@ -201,7 +201,7 @@ router.post("/login", async (req, res) => {
 router.route('/addAppointmentz/:id').post(async (req, res) => {
     try {
         const patID = req.params.id;
-        const { name, date, time, reason, info, doctor, insurance, notes } = req.body; // Destructure date, time, and reason directly
+        const { name, date, time, reason, info, doctor, insurance, notes,status } = req.body; // Destructure date, time, and reason directly
 
         const patient = await Patient.findById(patID);
 
@@ -210,7 +210,7 @@ router.route('/addAppointmentz/:id').post(async (req, res) => {
         }
 
         // Assuming appointments is an array field in your Patient model
-        patient.appointments.push({ name, date, time, reason, info, doctor, insurance, notes }); // Push the new appointment data as an object
+        patient.appointments.push({ name, date, time, reason, info, doctor, insurance, notes ,status}); // Push the new appointment data as an object
 
         await patient.save();
 
@@ -323,7 +323,7 @@ router.delete('/appointments/:patientId/:appointmentId', async (req, res) => {
 router.route('/appointments/:patientId/:appointmentId').put(async (req, res) => {
     const { patientId, appointmentId } = req.params;
     
-    const { name, date, time, reason, info, doctor, insurance, notes } = req.body;
+    const { name, date, time, reason, info, doctor, insurance, notes,status } = req.body;
 
     const patient = await Patient.findById(patientId);
 
@@ -339,7 +339,8 @@ router.route('/appointments/:patientId/:appointmentId').put(async (req, res) => 
         info,
         doctor,
         insurance,
-        notes
+        notes,
+        status
     };
 
     try {

@@ -91,6 +91,10 @@ const PatientSchema = new Schema({
                 notes: {
                     type: String,
 
+                },
+
+                status:{
+                    type:String,
                 }
             }
         ],

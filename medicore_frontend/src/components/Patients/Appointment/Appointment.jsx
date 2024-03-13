@@ -1,10 +1,21 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Container, Form } from 'react-bootstrap'
 import axios from 'axios';
 import { useAuthentication } from '../../Auth/AuthHelper';
 import AllAppointments from './AllAppointments';
 
 function Appointment() {
+
+
+    const [doctors, setDoctors] = useState([]);
+
+
+    useEffect(() => {
+        fetch('http://localhost:8070/doctor/')
+            .then(response => response.json())
+            .then(data => setDoctors(data))
+            .catch(error => console.error('Error fetching doctors:', error));
+    }, []);
 
     const user = useAuthentication();
 
@@ -15,14 +26,16 @@ function Appointment() {
     const [info, setinfo] = useState("");
     const [doctor, setdoctor] = useState("");
     const [insurance, setinsurance] = useState("");
+    const [status, setStatus] = useState("");
     const [notes, setnotes] = useState("");
+    // const [selectedDoctor, setSelectedDoctor] = useState('');
 
     if (!user) {
         return null;
     }
 
     //console.log(user._id);
-   
+
 
 
     function sendData(e) {
@@ -36,11 +49,13 @@ function Appointment() {
             info,
             doctor,
             insurance,
-            notes
+            notes,
+            status,
+            
         }
 
-        
-       
+
+
         // const userdetails = JSON.parse(localStorage.getItem('currentUser'));
         // console.log(userdetails._id);
 
@@ -51,7 +66,7 @@ function Appointment() {
             setTimeout(() => {
                 window.location.reload();
             })
-            
+
         }).catch((err) => {
             alert(err)
         })
@@ -121,13 +136,23 @@ function Appointment() {
                                 />
                             </Form.Group>
 
-                            <Form.Group className="mb-3" controlId="doctor">
+                            {/* <Form.Group className="mb-3" controlId="doctor">
                                 <Form.Label>Doctor Selection: </Form.Label>
                                 <Form.Control type="text" placeholder="Doctor" required
                                     onChange={(e) => {
                                         setdoctor(e.target.value)
                                     }}
                                 />
+                            </Form.Group> */}
+
+                            <Form.Group className="mb-3" controlId="doctor">
+                                <Form.Label>Doctor Selection: </Form.Label>
+                                <Form.Control as="select" value={doctor} onChange={(e) => setdoctor(e.target.value)} required>
+                                    <option value="">Select Doctor</option>
+                                    {doctors.map(doctor => (
+                                        <option key={doctor.id} value={doctor.id}>{doctor.name}</option>
+                                    ))}
+                                </Form.Control>
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="insurance">
@@ -147,6 +172,16 @@ function Appointment() {
                                     }}
                                 />
                             </Form.Group>
+
+                            {/* <Form.Group className="mb-3" controlId="status">
+                                <Form.Label>Status: </Form.Label>
+                                <Form.Control type="checkbox" placeholder="Status"
+                                    onChange={(e) => {
+                                        setStatus(e.target.value)
+                                    }}
+                                />
+                            </Form.Group> */}
+
                         </div>
                     </div >
                     <center>
@@ -157,7 +192,7 @@ function Appointment() {
                     </center>
                 </Form>
             </Container>
-            <AllAppointments/>
+            <AllAppointments />
         </div>
 
     )

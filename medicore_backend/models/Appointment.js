@@ -43,8 +43,13 @@ const AppointmentSchema = new Schema({
     notes: {
         type: String,
 
+    },
+
+    status: {
+        type: Boolean,
     }
-},{
+
+}, {
     timestamps: true
 })
 

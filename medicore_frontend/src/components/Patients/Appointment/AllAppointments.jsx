@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 function AllAppointments() {
     const [userData, setUserData] = useState(null);
-    
+
     useEffect(() => {
         const currentUserData = localStorage.getItem('currentUser');
         if (currentUserData) {
@@ -44,13 +44,13 @@ function AllAppointments() {
             return;
         }
 
-       
+
     };
 
     // function OnClickUpdate() {
     //     var result = window.confirm(`Are you sure to Update Your Profile?`);
     //     if (result) {
-            
+
     //     } else {
     //         return;
     //     }
@@ -59,7 +59,7 @@ function AllAppointments() {
 
     return (
         <>
-            <hr/>
+            <hr />
             <h3 className='text-center mt-3'>Booked Appointments</h3>
             <Container>
                 <table className="table table-bordered table-hover mt-4">
@@ -78,7 +78,7 @@ function AllAppointments() {
                             <th scope="col" colSpan={2} style={{ textAlign: "center" }}>Action</th>
                         </tr>
                     </thead>
-                    
+
                     <tbody>
                         {userData?.appointments?.map((appointment, index) => (
                             <tr key={index}>
@@ -91,7 +91,19 @@ function AllAppointments() {
                                 <td>{appointment.doctor}</td>
                                 <td>{appointment.insurance}</td>
                                 <td>{appointment.notes}</td>
-                                <td><button className='btn btn-warning btn-block'>Pending</button></td>
+
+
+                                {/* <td><button className='btn btn-warning btn-block'>Pending</button></td>
+                                <td>{appointment.status}</td> */}
+
+                                {appointment.status ? (
+                                    <td><button className='btn btn-warning btn-block'>Pending</button></td>
+                                ) : (
+                                    <td><button className='btn btn-primary btn-block'>Closed</button></td>
+                                )}
+
+
+
                                 <td>
                                     <Link
                                         to={`/user/updateappointment/${appointment._id}`}
@@ -100,7 +112,7 @@ function AllAppointments() {
                                     </Link>
                                 </td>
                                 <td>
-                                    <button className='btn btn-danger btn-block' onClick={() => onDeleteClick(userData?._id,appointment._id)}>DELETE</button>
+                                    <button className='btn btn-danger btn-block' onClick={() => onDeleteClick(userData?._id, appointment._id)}>DELETE</button>
                                 </td>
                             </tr>
                         ))}

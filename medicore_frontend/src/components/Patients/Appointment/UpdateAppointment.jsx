@@ -5,6 +5,14 @@ import { Container, Form } from 'react-bootstrap';
 
 function UpdateAppointment() {
 
+
+    useEffect(() => {
+        fetch('http://localhost:8070/doctor/')
+            .then(response => response.json())
+            .then(data => setDoctors(data))
+            .catch(error => console.error('Error fetching doctors:', error));
+    }, []);
+
     const [name, setName] = useState('');
     const [date, setDate] = useState('');
     const [time, setTime] = useState('');
@@ -13,6 +21,9 @@ function UpdateAppointment() {
     const [doctor, setDoctor] = useState('');
     const [insurance, setInsurance] = useState('');
     const [notes, setNotes] = useState('');
+    const [status, setStatus] = useState('');
+
+    const [doctors, setDoctors] = useState([]);
 
     const navigate = useNavigate();
 
@@ -21,8 +32,8 @@ function UpdateAppointment() {
     const currentUserData = localStorage.getItem('currentUser');
     const userID = JSON.parse(currentUserData)._id;
 
-    console.log("Appointment Id: ",id);
-    console.log("User Id: ",userID);
+    console.log("Appointment Id: ", id);
+    console.log("User Id: ", userID);
 
     useEffect(() => {
         axios.get(`http://localhost:8070/patient/appointments/${userID}/${id}`).then((res) => {
@@ -34,6 +45,7 @@ function UpdateAppointment() {
             setDoctor(res.data.appointment.doctor);
             setInsurance(res.data.appointment.insurance);
             setNotes(res.data.appointment.notes);
+            setStatus(res.data.appointment.status)
 
             console.log(res.data.appointment);
 
@@ -54,7 +66,8 @@ function UpdateAppointment() {
             info,
             doctor,
             insurance,
-            notes
+            notes,
+            status
         }
 
         axios.put(`http://localhost:8070/patient/appointments/${userID}/${id}`, updateAppointment).then(() => {
@@ -80,7 +93,7 @@ function UpdateAppointment() {
                         <div className="col-lg-6">
                             <Form.Group className="mb-3" controlId="name">
                                 <Form.Label>User Id: </Form.Label>
-                                <Form.Control type="text" value={userID} readOnly/>
+                                <Form.Control type="text" value={userID} readOnly />
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="name">
@@ -136,14 +149,25 @@ function UpdateAppointment() {
                                 />
                             </Form.Group>
 
-                            <Form.Group className="mb-3" controlId="doctor">
+                            {/* <Form.Group className="mb-3" controlId="doctor">
                                 <Form.Label>Doctor Selection: </Form.Label>
                                 <Form.Control type="text" placeholder="Doctor" value={doctor}
                                     onChange={(e) => {
                                         setDoctor(e.target.value)
                                     }}
                                 />
+                            </Form.Group> */}
+
+                            <Form.Group className="mb-3" controlId="doctor">
+                                <Form.Label>Doctor Selection: </Form.Label>
+                                <Form.Control as="select" value={doctor} onChange={(e) => setDoctor(e.target.value)} required>
+                                    <option value="">Select Doctor</option>
+                                    {doctors.map(doctor => (
+                                        <option key={doctor.id} value={doctor.id}>{doctor.name}</option>
+                                    ))}
+                                </Form.Control>
                             </Form.Group>
+
 
                             <Form.Group className="mb-3" controlId="insurance">
                                 <Form.Label>Insurance Information: </Form.Label>
@@ -162,6 +186,16 @@ function UpdateAppointment() {
                                     }}
                                 />
                             </Form.Group>
+
+                            <Form.Group className="mb-1" controlId="notes">
+                                <Form.Label>Status: </Form.Label>
+                                <Form.Control type="checkbox"
+                                    onChange={(e) => {
+                                        setStatus(e.target.value)
+                                    }}
+                                />
+                            </Form.Group>
+
                         </div>
                     </div >
                     <center>
