@@ -121,4 +121,19 @@ router.route('/all').get(async (req, res) => {
     }
 });
 
+
+router.route('/get/:doctor').get(async (req, res) => {
+    let doctor = req.params.doctor;
+
+    const pat = await Appointment.find(doctor)
+
+        .then((appointment) => {
+            res.status(200).send({ status: "Appointment Fetched!", appointment })
+        }).catch(() => {
+            console.log(err.message);
+            res.status(500).send({ status: "Error with get Appointment!", error: err.message })
+        })
+
+})
+
 module.exports = router;

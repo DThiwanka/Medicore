@@ -95,7 +95,12 @@ function PaAppointment() {
                 <td>{appointment.reason}</td>
                 <td>{appointment.doctor}</td>
                 <td>{appointment.notes}</td>
-                <td><button className='btn btn-warning btn-block'>Pending</button></td>
+                {/* <td><button className='btn btn-warning btn-block'>Pending</button></td> */}
+                {appointment.status ? (
+                                    <td><button className='btn btn-warning btn-block'>Pending</button></td>
+                                ) : (
+                                    <td><button className='btn btn-primary btn-block'>Closed</button></td>
+                                )}
                 <td style={actionCellStyle}>
                   <Link
                     to={`/user/updateappointment/${appointment._id}`}
