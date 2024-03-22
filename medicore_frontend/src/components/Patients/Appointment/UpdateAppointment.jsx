@@ -7,7 +7,7 @@ function UpdateAppointment() {
 
 
     useEffect(() => {
-        fetch('http://localhost:8070/doctor/')
+        fetch('https://medicore.onrender.com/doctor/')
             .then(response => response.json())
             .then(data => setDoctors(data))
             .catch(error => console.error('Error fetching doctors:', error));
@@ -36,7 +36,7 @@ function UpdateAppointment() {
     console.log("User Id: ", userID);
 
     useEffect(() => {
-        axios.get(`http://localhost:8070/patient/appointments/${userID}/${id}`).then((res) => {
+        axios.get(`https://medicore.onrender.com/patient/appointments/${userID}/${id}`).then((res) => {
             setName(res.data.appointment.name);
             setDate(res.data.appointment.date);
             setTime(res.data.appointment.time);
@@ -70,7 +70,7 @@ function UpdateAppointment() {
             status
         }
 
-        axios.put(`http://localhost:8070/patient/appointments/${userID}/${id}`, updateAppointment).then(() => {
+        axios.put(`https://medicore.onrender.com/patient/appointments/${userID}/${id}`, updateAppointment).then(() => {
             alert("Appointment Updated");
             navigate(`/user/profile/${id}`);
         }).catch((err) => {

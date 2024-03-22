@@ -11,7 +11,7 @@ function Appointment() {
 
 
     useEffect(() => {
-        fetch('http://localhost:8070/doctor/')
+        fetch('https://medicore.onrender.com/doctor/')
             .then(response => response.json())
             .then(data => setDoctors(data))
             .catch(error => console.error('Error fetching doctors:', error));
@@ -59,8 +59,8 @@ function Appointment() {
         // const userdetails = JSON.parse(localStorage.getItem('currentUser'));
         // console.log(userdetails._id);
 
-        // axios.post("http://localhost:8070/appointment/add", newAppointment).then(() => {
-        axios.post(`http://localhost:8070/patient/addAppointmentz/${user._id}`, newAppointment).then(() => {
+        // axios.post("https://medicore.onrender.com/appointment/add", newAppointment).then(() => {
+        axios.post(`https://medicore.onrender.com/patient/addAppointmentz/${user._id}`, newAppointment).then(() => {
             alert("Appointment Added!");
 
             setTimeout(() => {

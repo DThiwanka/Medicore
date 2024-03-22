@@ -46,7 +46,7 @@ function Register() {
         };
         
         if(password === reppassword){
-        axios.post("http://localhost:8070/patient/add",newPatient).then(()=>{
+        axios.post("https://medicore.onrender.com/patient/add",newPatient).then(()=>{
             
             alert("Account Created Successfully!");
             clearform();

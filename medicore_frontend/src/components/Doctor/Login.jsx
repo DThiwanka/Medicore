@@ -18,7 +18,7 @@ function Login() {
         try {
             setLoading(true);
 
-            const { data, status } = await axios.post('http://localhost:8070/doctor/login', {
+            const { data, status } = await axios.post('https://medicore.onrender.com/doctor/login', {
                 doccode,
                 email,
                 password,

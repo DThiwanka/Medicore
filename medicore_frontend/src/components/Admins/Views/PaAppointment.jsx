@@ -17,7 +17,7 @@ function PaAppointment() {
 
   const fetchData = async (id) => {
       try {
-        const response = await axios.get(`http://localhost:8070/patient/get/${id}`);
+        const response = await axios.get(`https://medicore.onrender.com/patient/get/${id}`);
         setUserData(response.data.patient);
         
         } catch (error) {
@@ -32,7 +32,7 @@ function PaAppointment() {
 
         if (result) {
             try {
-                await axios.delete(`http://localhost:8070/patient/appointments/${id}/${appointmentId}`);
+                await axios.delete(`https://medicore.onrender.com/patient/appointments/${id}/${appointmentId}`);
                 fetchData(id); // Refresh data after successful deletion  
                 alert('Appointment Deleted Successfully');
             } catch (err) {

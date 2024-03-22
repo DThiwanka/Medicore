@@ -37,7 +37,7 @@ function Getallpatients() {
   useEffect(() => {
     async function getPatients() {
       try {
-        const response = await axios.get("http://localhost:8070/patient");
+        const response = await axios.get("https://medicore.onrender.com/patient");
         setPatients(response.data); // Update state with fetched patient data
         console.log(response.data)
       } catch (error) {
@@ -55,7 +55,7 @@ function Getallpatients() {
 
     if (result) {
       try {
-        await axios.delete(`http://localhost:8070/patient/delete/${userId}`);
+        await axios.delete(`https://medicore.onrender.com/patient/delete/${userId}`);
         //fetchData(userId); // Refresh data after successful deletion 
         alert('User Deleted Successfully');
         localStorage.clear();

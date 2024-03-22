@@ -17,7 +17,7 @@ function Login() {
         e.preventDefault();
 
             try {
-                const { data, status } = await axios.post('http://localhost:8070/patient/login', {
+                const { data, status } = await axios.post('https://medicore.onrender.com/patient/login', {
                     email,
                     password,
                 });

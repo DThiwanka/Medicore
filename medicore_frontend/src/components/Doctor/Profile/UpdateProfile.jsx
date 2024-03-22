@@ -18,7 +18,7 @@ function UpdateProfile() {
 
     const fetchData = async (id) => {
         try {
-            const response = await axios.get(`http://localhost:8070/doctor/get/${id}`);
+            const response = await axios.get(`https://medicore.onrender.com/doctor/get/${id}`);
             setDoctorData(response.data.doctor);
         } catch (error) {
             console.error('Error fetching data:', error);

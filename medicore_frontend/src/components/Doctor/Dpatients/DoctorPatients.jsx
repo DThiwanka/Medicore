@@ -12,7 +12,7 @@ function DoctorPatients() {
 
   // const fetchAppointments = async (docName) => {
   //   try {
-  //     const response = await axios.get(`http://localhost:8070/appointment/all`);
+  //     const response = await axios.get(`https://medicore.onrender.com/appointment/all`);
   //     const filteredAppointments = response.data.filter(appointments => appointments.doctor.name === docName);
   //     setAppointments(filteredAppointments);
   //     console.log(response)
@@ -24,7 +24,7 @@ function DoctorPatients() {
 
   const fetchAppointments = async (docName) => {
     try {
-      const response = await axios.get('http://localhost:8070/appointment/all');
+      const response = await axios.get('https://medicore.onrender.com/appointment/all');
       console.log('All Appointments:', response.data);
       const filteredAppointments = response.data.filter(appointment => {
         console.log('Doctor Name:', appointment.doctor.doctor);

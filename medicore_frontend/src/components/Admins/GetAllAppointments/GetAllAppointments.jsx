@@ -29,7 +29,7 @@ function GetAllAppointments() {
     useEffect(() => {
         async function getAppointments() {
             try {
-                const response = await axios.get("http://localhost:8070/appointment/all");
+                const response = await axios.get("https://medicore.onrender.com/appointment/all");
                 setAppointments(response.data);
                 console.log(response.data)
             } catch (error) {

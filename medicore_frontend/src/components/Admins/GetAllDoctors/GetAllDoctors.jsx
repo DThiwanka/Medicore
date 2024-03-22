@@ -20,7 +20,7 @@ function GetAllDoctors() {
     useEffect(() => {
         async function getDoctors() {
             try {
-                const response = await axios.get("http://localhost:8070/doctor/");
+                const response = await axios.get("https://medicore.onrender.com/doctor/");
                 setdoctors(response.data);
                 console.log(response.data);
             } catch (error) {

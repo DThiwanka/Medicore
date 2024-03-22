@@ -22,7 +22,7 @@ function Getalladmins() {
   useEffect(() => {
     async function getadmins() {
       try {
-        const response = await axios.get("http://localhost:8070/admin");
+        const response = await axios.get("https://medicore.onrender.com/admin");
         setAdmins(response.data);
         console.log(response.data)
       } catch (error) {

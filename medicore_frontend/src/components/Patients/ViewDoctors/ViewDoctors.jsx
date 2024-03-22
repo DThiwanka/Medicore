@@ -4,7 +4,7 @@ function ViewDoctors() {
     const [doctors, setDoctors] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:8070/doctor/')
+        fetch('https://medicore.onrender.com/doctor/')
             .then(response => response.json())
             .then(data => {
                 setDoctors(data);

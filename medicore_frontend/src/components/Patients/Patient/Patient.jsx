@@ -14,7 +14,7 @@ function Patient() {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get(`http://localhost:8070/patient/get/${userID}`);
+            const response = await axios.get(`https://medicore.onrender.com/patient/get/${userID}`);
             setUserData(response.data.patient);
             console.log(response)
         } catch (error) {
@@ -38,7 +38,7 @@ function Patient() {
 
         if (result) {
             try {
-                await axios.delete(`http://localhost:8070/patient/delete/${userId}`);
+                await axios.delete(`https://medicore.onrender.com/patient/delete/${userId}`);
                 fetchData(userId); // Refresh data after successful deletion  
                 alert('User Deleted Successfully');
                 localStorage.clear();

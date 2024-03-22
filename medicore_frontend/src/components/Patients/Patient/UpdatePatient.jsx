@@ -18,7 +18,7 @@ const UpdatePatient = () => {
     const { id } = useParams();
     
     useEffect(() => {
-        axios.get(`http://localhost:8070/patient/get/${id}`).then((res) => {
+        axios.get(`https://medicore.onrender.com/patient/get/${id}`).then((res) => {
             setName(res.data.patient.name);
             setEmail(res.data.patient.email);
             setConnumber(res.data.patient.connumber);
@@ -42,7 +42,7 @@ const UpdatePatient = () => {
             address,
         }
 
-        axios.put(`http://localhost:8070/patient/update/${id}`, newPatient).then(() => {
+        axios.put(`https://medicore.onrender.com/patient/update/${id}`, newPatient).then(() => {
             alert("Patient Updated");
             navigate(`/user/profile/${id}`);
         }).catch((err) => {
