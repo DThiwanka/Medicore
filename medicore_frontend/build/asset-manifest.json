@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/static/css/main.e9e74a74.css",
+    "main.js": "/static/js/main.a82e0ed2.js",
+    "static/media/profile-2.png": "/static/media/profile-2.4752a9db34458eeffcfa.png",
+    "static/media/doctor-picture.png": "/static/media/doctor-picture.396cac519a4d991293ae.png",
+    "static/media/profile-1.png": "/static/media/profile-1.0261bb4efe7a9075c56a.png",
+    "static/media/doctor-group.png": "/static/media/doctor-group.01394386d8270bd40bc1.png",
+    "static/media/profile-3.png": "/static/media/profile-3.530bb2fd7ece3dd3b3be.png",
+    "static/media/doctor-book-appointment.png": "/static/media/doctor-book-appointment.edb3f4ac282ff3fefaec.png",
+    "static/media/profile-4.png": "/static/media/profile-4.3c44185ab9c84614038f.png",
+    "static/media/logo.png": "/static/media/logo.350f317f73a781d81856.png",
+    "index.html": "/index.html",
+    "main.e9e74a74.css.map": "/static/css/main.e9e74a74.css.map",
+    "main.a82e0ed2.js.map": "/static/js/main.a82e0ed2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e9e74a74.css",
+    "static/js/main.a82e0ed2.js"
+  ]
+}
