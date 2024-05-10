@@ -28,7 +28,7 @@ const tableHeaderStyle = {
 
 
 //Functions
-function Getallpatients() {
+function GetAllpatients() {
 
   const componentPDF = useRef();
 
@@ -153,4 +153,4 @@ function Getallpatients() {
   );
 }
 
-export default Getallpatients;
+export default GetAllpatients;

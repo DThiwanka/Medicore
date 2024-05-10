@@ -20,7 +20,7 @@ import Register from './components/Register/Register';
 import Login from './components/Login/Login';
 
 //Get ALL
-import Getallpatients from './components/Admins/GetAllPatients/Getallpatients';
+import Getallpatients from './components/Admins/GetAllPatients/GetAllpatients';
 import Getalladmins from './components/Admins/GetAllAdmins/Getalladmins';
 import Patient from './components/Patients/Patient/Patient';
 import NavBar from './components/NavBar/NavBar';
@@ -40,6 +40,7 @@ import DoctorPatients from './components/Doctor/Dpatients/DoctorPatients';
 import DocUpdate from './components/Doctor/Profile/UpdateProfile';
 import GetAllDoctors from './components/Admins/GetAllDoctors/GetAllDoctors';
 import ViewDoctors from './components/Patients/ViewDoctors/ViewDoctors';
+import GetAllpatients from './components/Admins/GetAllPatients/GetAllpatients';
 
 
 //Doctor
@@ -71,7 +72,7 @@ function App() {
 
 
           <Route path="/admin/" element={<AdminHomePage />} />
-          <Route path="/admin/viewpatients/" element={<Getallpatients />} />
+          <Route path="/admin/viewpatients/" element={<GetAllpatients />} />
           <Route path="/admin/viewadmins/" element={<Getalladmins />} />
           <Route path="/admin/viewdoctors/" element={<GetAllDoctors />} />
           <Route path="/admin/viewappointments/" element={<GetAllAppointments />} />
